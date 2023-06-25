@@ -265,28 +265,8 @@ mixpanel.track("Page View", {
             </div>
           </div>
         </div>
-        <div class="navbar-item has-dropdown is-hoverable getting-started-cta">
-          <a class="navbar-link primary" href="https://neo4j.com/cloud/aura/?ref=docs-nav-get-started">Get Started</a>
-          <div class="navbar-dropdown">
-            <div class="navbar-item project">
-              <a class="project-name" href="https://neo4j.com/cloud/aura/?ref=docs-get-started-dropdown">
-                <div>Neo4j AuraDB <span class="aura-ticker">Start Free</span></div>
-                <div class="project-subtitle">Start your fully managed Neo4j cloud database</div>
-              </a>
-            </div>
-            <div class="navbar-item project">
-              <a class="project-name" href="https://sandbox.neo4j.com/?ref=docs-get-started-dropdown-cta&persona=data-scientist">
-                <div>Neo4j Sandbox</div>
-                <div class="project-subtitle">Learn and use Neo4j for data science & more</div>
-              </a>
-            </div>
-            <div class="navbar-item project">
-              <a class="project-name" href="https://neo4j.com/download/?ref=docs-get-started-dropdown">
-                <div>Neo4j Desktop</div>
-                <div class="project-subtitle">Manage multiple local or remote Neo4j projects</div>
-              </a>
-            </div>
-          </div>
+        <div class="navbar-item is-hoverable getting-started-cta">
+          <a class="navbar-link primary" href="https://neo4j.com/cloud/platform/aura-graph-database/?ref=docs-nav-get-started">Get Started Free</a>
         </div>
         <div class="navbar-item">
           <a class="navbar-link search-button" href="#search" id="search_open"><svg width="23px" height="23px" viewBox="0 0 23 23"
@@ -498,7 +478,7 @@ It allows the Cypher query planner to re-use your queries instead of parse and b
 </div>
 </div>
 <div class="sect1">
-<h2 id="set-params"><a class="anchor" href="#set-params"></a>1. Set query parameters</h2>
+<h2 id="set-params"><a class="anchor" href="#set-params"></a>Set query parameters</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can set a parameter to be sent with your queries by using the <code>:param</code> command.
@@ -644,7 +624,7 @@ Alternatively, you can run the <code>:param</code> command separately from the <
 </div>
 </div>
 <div class="sect1">
-<h2 id="_cypher_result"><a class="anchor" href="#_cypher_result"></a>2. Cypher result</h2>
+<h2 id="_cypher_result"><a class="anchor" href="#_cypher_result"></a>Cypher result</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>It is possible to save the result from a Cypher query to a parameter.</p>
@@ -712,7 +692,7 @@ Alternatively, you can run the <code>:param</code> command separately from the <
 </div>
 </div>
 <div class="sect2">
-<h3 id="_destructuring"><a class="anchor" href="#_destructuring"></a>2.1. Destructuring</h3>
+<h3 id="_destructuring"><a class="anchor" href="#_destructuring"></a>Destructuring</h3>
 <div class="paragraph">
 <p>It is possible to pick individual values from your result using destructuring and set a specific parameter to a specific value.</p>
 </div>
@@ -830,7 +810,7 @@ $z = 3</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear-params"><a class="anchor" href="#clear-params"></a>2.2. Clear parameters</h3>
+<h3 id="clear-params"><a class="anchor" href="#clear-params"></a>Clear parameters</h3>
 <div class="paragraph">
 <p>You can clear all currently set parameters from Neo4j Browser by running:</p>
 </div>
@@ -841,7 +821,7 @@ $z = 3</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_set_several_parameters"><a class="anchor" href="#_set_several_parameters"></a>2.3. Set several parameters</h3>
+<h3 id="_set_several_parameters"><a class="anchor" href="#_set_several_parameters"></a>Set several parameters</h3>
 <div class="paragraph">
 <p>You can set several parameters with the <code>:params</code> command, this also clears all currently set parameters.</p>
 </div>
@@ -883,7 +863,7 @@ $f = false</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_parameter_assistance"><a class="anchor" href="#_parameter_assistance"></a>3. Parameter assistance</h2>
+<h2 id="_parameter_assistance"><a class="anchor" href="#_parameter_assistance"></a>Parameter assistance</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you run a query using parameters without first declaring them all, Browser returns a <code>ParameterMissing</code> error and lists the missing parameter(s).
@@ -912,7 +892,7 @@ Since the result frame is reusable, once you have set your parameter(s), you can
 </div>
 </div>
 <div class="sect1">
-<h2 id="_duration_for_the_query_parameters"><a class="anchor" href="#_duration_for_the_query_parameters"></a>4. Duration for the query parameters</h2>
+<h2 id="_duration_for_the_query_parameters"><a class="anchor" href="#_duration_for_the_query_parameters"></a>Duration for the query parameters</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Parameters are not saved when you close the browser.
