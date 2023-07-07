@@ -463,6 +463,61 @@ uses some very complicated math along with very prelimiary MDN standard basic sh
 <div class="paragraph">
 <p><span class="image"><img src="../_images/neo4j-browser.png" alt="neo4j browser" width="300"></span></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sentry.io is initialized in the top index.tsx</p>
+</li>
+<li>
+<p>AppInit.tsx is responsible for several initializations:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Redux</p>
+</li>
+<li>
+<p>Suber: The reason suber is used is sharing states between Neo4J database data and React components is not supported
+by Redux. As its doc (<a href="https://github.com/oskarhane/suber#in-combination-with-redux" class="bare">https://github.com/oskarhane/suber#in-combination-with-redux</a>) points out, Redux is for two-way
+communications between components. Suber is for one-way comm. between component and DB.</p>
+</li>
+<li>
+<p>Apollo GraphQL Client</p>
+</li>
+<li>
+<p>Drag &amp; Drop Plugin</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The initialization assumes provider pattern around regular App component:</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;Provider store={store as any}&gt;
+  &lt;BusProvider bus={bus}&gt;
+    &lt;ApolloProvider client={client}&gt;
+      &lt;DndProvider backend={HTML5Backend}&gt;
+        &lt;App /&gt;
+      &lt;/DndProvider&gt;
+    &lt;/ApolloProvider&gt;
+  &lt;/BusProvider&gt;
+&lt;/Provider&gt;</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Neo4J Browser styling is implemented via <a href="https://styled-components.com/">styled-components</a> and is initialized in App.tsx</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <nav class="pagination">
