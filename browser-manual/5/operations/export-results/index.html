@@ -461,6 +461,25 @@ mixpanel.track("Page View", {
 <div class="paragraph">
 <p>Depending on the result frame these options can vary.</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In order to export both nodes and links, the graph query should reflect both of them. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">MATCH (n)-[r]-&gt;(m) RETURN r, m, n</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div id="download_graph" class="paragraph">
 <div class="title">Export result, <em>graph result frame</em>.</div>
 <p><span class="image"><img src="../../_images/download-graph.png" alt="Export graph" width="50%"></span></p>
