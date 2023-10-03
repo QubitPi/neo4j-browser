@@ -230,7 +230,20 @@ export class GraphEventHandlerModel {
   }
 
   onCanvasDblClicked(): void {
-    this.graph.addNodes([new NodeModel('New Node', [], {}, {})])
+    const maxId: number = Math.max(
+      ...this.graph._nodes.map(node => parseInt(node.id))
+    )
+    const newId = maxId + 1
+
+    // TODO: make label, properties EDITABLE in followup PR's
+    this.graph.addNodes([
+      new NodeModel(
+        newId.toString(),
+        [],
+        { name: 'New Node' },
+        { name: 'string' }
+      )
+    ])
     this.visualization.update({ updateNodes: true, updateRelationships: true })
 
     // this will persist node to Neo4J DB...
