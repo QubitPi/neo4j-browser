@@ -108,6 +108,11 @@ export class Visualization {
           return this.trigger('canvasClicked')
         }
       })
+      .on('dblclick', () => {
+        if (!this.draw) {
+          return this.trigger('canvasDblClicked')
+        }
+      })
 
     this.container = this.baseGroup.append('g')
     this.geometry = new GraphGeometryModel(style)
