@@ -231,7 +231,7 @@ export class GraphEventHandlerModel {
 
   onCanvasDblClicked(): void {
     const maxId: number = Math.max(
-      ...this.graph._nodes.map(node => parseInt(node.id))
+      ...this.graph.nodes().map(node => parseInt(node.id))
     )
     const newId = maxId + 1
 
@@ -239,12 +239,16 @@ export class GraphEventHandlerModel {
     this.graph.addNodes([
       new NodeModel(
         newId.toString(),
-        [],
+        ['Undefined'],
         { name: 'New Node' },
         { name: 'string' }
       )
     ])
-    this.visualization.update({ updateNodes: true, updateRelationships: true })
+    this.visualization.update({
+      updateNodes: true,
+      updateRelationships: true,
+      restartSimulation: true
+    })
 
     // this will persist node to Neo4J DB...
     this.onGraphInteraction(NODE_ON_CANVAS_CREATE)
