@@ -230,7 +230,10 @@ export class GraphEventHandlerModel {
   }
 
   onCanvasDblClicked(): void {
-    console.log('You have double clicked the canvas!')
+    this.graph.addNodes([new NodeModel('New Node', [], {}, {})])
+    this.visualization.update({ updateNodes: true, updateRelationships: true })
+
+    // this will persist node to Neo4J DB...
     this.onGraphInteraction(NODE_ON_CANVAS_CREATE)
   }
 
