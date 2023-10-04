@@ -251,7 +251,11 @@ export class GraphEventHandlerModel {
     })
 
     // this will persist node to Neo4J DB...
-    this.onGraphInteraction(NODE_ON_CANVAS_CREATE)
+    this.onGraphInteraction(NODE_ON_CANVAS_CREATE, {
+      id: newId,
+      name: 'New Node',
+      labels: ['Undefined']
+    })
   }
 
   onItemMouseOut(): void {
