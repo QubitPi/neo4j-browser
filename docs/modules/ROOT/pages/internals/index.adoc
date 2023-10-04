@@ -25,6 +25,8 @@ TypeDoc
 
 image:neo4j-browser.png[width=900]
 
+* The orange triangle labled with "On Canvas Interaction" is discussed in detail in
+  link:internals/graph-interactions[graph interactions] section
 * Sentry.io is initialized in the top index.tsx
 * AppInit.tsx is responsible for several initializations:
 +

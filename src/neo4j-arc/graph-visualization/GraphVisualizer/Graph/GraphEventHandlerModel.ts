@@ -249,6 +249,7 @@ export class GraphEventHandlerModel {
       updateRelationships: true,
       restartSimulation: true
     })
+    this.graphModelChanged()
 
     // this will persist node to Neo4J DB...
     this.onGraphInteraction(NODE_ON_CANVAS_CREATE, {
