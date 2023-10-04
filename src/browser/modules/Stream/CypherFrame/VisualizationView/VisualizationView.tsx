@@ -276,41 +276,36 @@ LIMIT ${maxNewNeighbours}`
     this.autoCompleteRelationships([], this.graph.nodes(), true)
   }
 
-  createNodeGraphInteractionCallback: GraphInteractionCallBack = (
-    event,
-    properties
-  ) => {
-    if (event !== NODE_ON_CANVAS_CREATE) {
-      return
-    }
-
-    if (properties == null) {
-      return // TODO: throw error
-    }
-
-    const id = properties['id']
-    const name = properties['name']
-    const labels = (properties['labels'] as string[])
-      .map(label => `${label}`)
-      .join(':')
-
-    const query = `CREATE (n:${labels} { id: ${id}, name: $name });`
-
-    this.props.bus.self(
-      CYPHER_REQUEST,
-      {
-        query,
-        params: { labels, id, name },
-        queryType: NEO4J_BROWSER_USER_ACTION_QUERY
-      },
-      (response: any) => {
-        if (!response.success) {
-          console.error(response.error)
-        } else {
-          console.error('SUCCESSFULLY CREATED A NODE')
-        }
+  onGraphInteraction: GraphInteractionCallBack = (event, properties) => {
+    if (event == NODE_ON_CANVAS_CREATE) {
+      if (properties == null) {
+        throw new Error(
+          'A property map with id, name, and labels keys are required'
+        )
       }
-    )
+
+      const id = properties['id']
+      const name = properties['name']
+      const labels = (properties['labels'] as string[])
+        .map(label => `\`${label}\``)
+        .join(':')
+
+      const query = `CREATE (n:${labels} { id: ${id}, name: "${name}" });`
+
+      this.props.bus.self(
+        CYPHER_REQUEST,
+        {
+          query,
+          params: { labels, id, name },
+          queryType: NEO4J_BROWSER_USER_ACTION_QUERY
+        },
+        (response: any) => {
+          if (!response.success) {
+            throw new Error(response.error)
+          }
+        }
+      )
+    }
   }
 
   render(): React.ReactNode {
@@ -351,7 +346,7 @@ LIMIT ${maxNewNeighbours}`
           OverviewPaneOverride={OverviewPane}
           useGeneratedDefaultColors={false}
           initialZoomToFit
-          onGraphInteraction={this.createNodeGraphInteractionCallback}
+          onGraphInteraction={this.onGraphInteraction}
         />
       </StyledVisContainer>
     )
