@@ -443,7 +443,7 @@ mixpanel.track("Page View", {
 <div class="paragraph">
 <p>We define <strong>graph interactions</strong> as any <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">mouse</a> and
 <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent">keyboard</a> events on the
-<a href="../../visual-tour.html#frame-views"><em>Graph</em> frame view</a></p>
+<a href="../../visual-tour/index.html#frame-views"><em>Graph</em> frame view</a></p>
 </div>
 <div class="paragraph">
 <p>There are basically 3 components involved in handling users' interactions:</p>
@@ -473,7 +473,7 @@ mixpanel.track("Page View", {
 <a href="https://react.dev/learn/passing-data-deeply-with-context#the-problem-with-passing-props">prop-drilling</a> a callback
 called <strong>GraphInteractionCallBack</strong> all they way to the <em>GraphEventHandlerModel</em>. Since database operations should not
 be defined in neo4j-arc module, <em>GraphEventHandlerModel</em> can simply pass any argument to the callback function and let
-the upper level component (recall the component diagram in <a href="index.html">overview section</a>) <em>VisualizationView</em> handle
+the upper level component (recall the component diagram in <a href="../index.html">overview section</a>) <em>VisualizationView</em> handle
 the database connection, query issuing, and response handling, etc.</p>
 </div>
 </td>
