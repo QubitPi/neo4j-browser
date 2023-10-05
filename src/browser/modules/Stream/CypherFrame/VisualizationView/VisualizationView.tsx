@@ -286,11 +286,12 @@ LIMIT ${maxNewNeighbours}`
 
       const id = properties['id']
       const name = properties['name']
+      const variableName = `node${id}`
       const labels = (properties['labels'] as string[])
         .map(label => `\`${label}\``)
         .join(':')
 
-      const query = `CREATE (n:${labels} { id: ${id}, name: "${name}" });`
+      const query = `CREATE (${variableName}:${labels} { id: ${id}, name: "${name}" });`
 
       this.props.bus.self(
         CYPHER_REQUEST,

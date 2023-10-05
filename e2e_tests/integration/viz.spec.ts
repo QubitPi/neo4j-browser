@@ -252,11 +252,11 @@ describe('Viz rendering', () => {
       .trigger('click', 200, 200, { force: true })
       .trigger('dblclick', 200, 200, { force: true })
 
+    cy.get('[data-testid="nodeGroups"]', { timeout: 5000 }).contains('New Node')
     cy.get('[data-testid="vizInspector"]', { timeout: 5000 }).contains(
       'Undefined'
     )
 
-    cy.executeCommand('MATCH (a:TestLabel) DETACH DELETE a')
-    cy.executeCommand('MATCH (n:Undefined) DETACH DELETE n')
+    cy.executeCommand('MATCH (n) DETACH DELETE n')
   })
 })

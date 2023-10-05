@@ -172,6 +172,7 @@ export class Visualization {
     const nodeGroups = this.container
       .selectAll<SVGGElement, NodeModel>('g.node')
       .attr('transform', d => `translate(${d.x},${d.y})`)
+      .attr('data-testid', 'nodeGroups')
 
     nodeRenderer.forEach(renderer => nodeGroups.call(renderer.onTick, this))
 

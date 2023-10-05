@@ -235,7 +235,6 @@ export class GraphEventHandlerModel {
     )
     const newId = maxId + 1
 
-    // TODO: make label, properties EDITABLE in followup PR's
     this.graph.addNodes([
       new NodeModel(
         newId.toString(),
@@ -244,14 +243,9 @@ export class GraphEventHandlerModel {
         { name: 'string' }
       )
     ])
-    this.visualization.update({
-      updateNodes: true,
-      updateRelationships: true,
-      restartSimulation: true
-    })
+    this.visualization.update({ updateNodes: true, updateRelationships: true })
     this.graphModelChanged()
 
-    // this will persist node to Neo4J DB...
     this.onGraphInteraction(NODE_ON_CANVAS_CREATE, {
       id: newId,
       name: 'New Node',
