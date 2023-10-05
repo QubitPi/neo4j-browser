@@ -26,6 +26,7 @@
 </script>
 <!-- End Hotjar Tracking code -->
     <title>How Graph Interations Take Effect on Displayed Graph and Backing Database - Neo4j Browser</title>
+    <link rel="prev" href="../graph-modelling/">
       <meta name="description" content="How graph interations take effect on displayed graph and backing database">
 <link rel="stylesheet" href="https://neo4j.com/wp-content/themes/neo4jweb/assets/neo4j-react-modules-assets/search-preact/chunkless/bundle.css" />
 <link rel="stylesheet" href="https://neo4j.com/wp-content/themes/neo4jweb/assets/neo4j-react-modules-assets/search-preact/chunkless/utilities.min.css" />
@@ -395,6 +396,9 @@ mixpanel.track("Page View", {
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../graph-modelling/">Graph Modeling</a>
   </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="./">How Graph Interations Take Effect on Displayed Graph and Backing Database</a>
+  </li>
 </ul>
   </li>
 </ul>
@@ -413,6 +417,9 @@ mixpanel.track("Page View", {
     <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../">Neo4j Browser</a></li>
+    <li><a href="../">
+        Internals
+    </a></li>
     <li><a href="./">
         How Graph Interations Take Effect on Displayed Graph and Backing Database
     </a></li>
@@ -436,7 +443,7 @@ mixpanel.track("Page View", {
 <div class="paragraph">
 <p>We define <strong>graph interactions</strong> as any <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">mouse</a> and
 <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent">keyboard</a> events on the
-<a href="visual-tour.html#frame-views"><em>Graph</em> frame view</a></p>
+<a href="../../visual-tour.html#frame-views"><em>Graph</em> frame view</a></p>
 </div>
 <div class="paragraph">
 <p>There are basically 3 components involved in handling users' interactions:</p>
@@ -453,6 +460,25 @@ mixpanel.track("Page View", {
 <p><strong>VisualizationView</strong> is involved if a certain type of user interaction involves database changes</p>
 </li>
 </ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In the case 3. above, <em>VisualizationView</em>
+<a href="https://react.dev/learn/passing-data-deeply-with-context#the-problem-with-passing-props">prop-drilling</a> a callback
+called <strong>GraphInteractionCallBack</strong> all they way to the <em>GraphEventHandlerModel</em>. Since database operations should not
+be defined in neo4j-arc module, <em>GraphEventHandlerModel</em> can simply pass any argument to the callback function and let
+the upper level component (recall the component diagram in <a href="index.html">overview section</a>) <em>VisualizationView</em> handle
+the database connection, query issuing, and response handling, etc.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -480,13 +506,119 @@ mixpanel.track("Page View", {
 </div>
 <div class="paragraph">
 <p>For example, let&#8217;s say we&#8217;d like to support easy on-graph editing by allowing us to create a new node when we double
-click on canvas. We will</p>
+click on canvas. We will follow the steps above by first defining the event handler function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">  onCanvasDblClicked(): void {
+    this.graph.addNodes([ new NodeModel(...) ])
+    this.visualization.update({ updateNodes: true, updateRelationships: true })
+    this.graphModelChanged()
+
+    this.onGraphInteraction(NODE_ON_CANVAS_CREATE, { id: newNodeId, name: 'New Node', labels: ['Undefined'] })
+  }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When we add a new node to the graph, it is important to update the visual of the graph using <code>visualization.update()</code>
+and the stats panel with <code>graphModelChanged()</code></p>
+</div>
+<div class="paragraph">
+<p>We would also like to persist the new node to database so that refreshing the page or re-login shall still render this
+node. Therefore we invoke <code>onGraphInteraction()</code> above. The details of this method will be disucssed below</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Next, we bind the function so that <code>Visualization.ts</code> component can delegte any canvas double click callbacks to this
+function</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">bindEventHandlers(): void {
+  this.visualization
+    ...
+    .on('canvasDblClicked', this.onCanvasDblClicked.bind(this))
+    ...
+  this.onItemMouseOut()
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When <code>Visualization.ts</code> recrives a canvas double click from user, it invoke the event handler function via
+<a href="https://www.d3indepth.com/selections/#event-handling">D3 event handlers</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">this.rect = this.baseGroup
+  .append('rect')
+  ...
+  .on('dblclick', () =&gt; {
+    if (!this.draw) {
+      return this.trigger('canvasDblClicked')
+    }
+  })</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is how we trigger the handler function in <code>Visualization</code>.</p>
+</div>
+<div class="paragraph">
+<p>As we&#8217;ve mentioned earlier, we would like to persist this new node to database. They way to do that is by modifying
+<strong>VisualizationView.onGraphInteraction()</strong> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">  onGraphInteraction: GraphInteractionCallBack = (event, properties) =&gt; {
+    if (event == NODE_ON_CANVAS_CREATE) {
+      if (properties == null) {
+        throw new Error(
+          'A property map with id, name, and labels keys are required'
+        )
+      }
+
+      const id = properties['id']
+      const name = properties['name']
+      const variableName = `node${id}`
+      const labels = (properties['labels'] as string[]).map(label =&gt; `\`${label}\``).join(':')
+
+      const query = `CREATE (${variableName}:${labels} { id: ${id}, name: "${name}" });`
+
+      this.props.bus.self(
+        CYPHER_REQUEST,
+        {
+          query,
+          params: { labels, id, name },
+          queryType: NEO4J_BROWSER_USER_ACTION_QUERY
+        },
+        (response: any) =&gt; {
+          if (!response.success) {
+            throw new Error(response.error)
+          }
+        }
+      )
+    }
+  }</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The complete implementation is in <a href="https://github.com/QubitPi/neo4j-browser/pull/7">this PR</a> as a reference</p>
 </div>
 </div>
 </div>
+<nav class="pagination">
+  <span class="prev"><a href="../graph-modelling/">Graph Modeling</a></span>
+
+</nav>
     <div class="feedback">
     <div class="header question">
         <p><strong>Was this page helpful?</strong></p>
