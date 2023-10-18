@@ -28,7 +28,8 @@ import {
   GraphInteractionCallBack,
   GraphModel,
   GraphVisualizer,
-  NODE_ON_CANVAS_CREATE
+  NODE_ON_CANVAS_CREATE,
+  NODE_PROP_UPDATE
 } from 'neo4j-arc/graph-visualization'
 
 import { StyledVisContainer } from './VisualizationView.styled'
@@ -277,6 +278,33 @@ LIMIT ${maxNewNeighbours}`
   }
 
   onGraphInteraction: GraphInteractionCallBack = (event, properties) => {
+    if (event == NODE_PROP_UPDATE) {
+      if (properties == null) {
+        throw new Error('')
+      }
+
+      const nodeId = properties['nodeId']
+      const propKey = properties['propKey']
+      const propVal = properties['propVal']
+
+      const query = `MATCH (n) WHERE ID(n) = ${nodeId} SET n.${propKey} = "${propVal}"`
+      console.log(query)
+
+      this.props.bus.self(
+        CYPHER_REQUEST,
+        {
+          query,
+          params: { nodeId, propKey, propVal },
+          queryType: NEO4J_BROWSER_USER_ACTION_QUERY
+        },
+        (response: any) => {
+          if (!response.success) {
+            throw new Error(response.error)
+          }
+        }
+      )
+    }
+
     if (event == NODE_ON_CANVAS_CREATE) {
       if (properties == null) {
         throw new Error(

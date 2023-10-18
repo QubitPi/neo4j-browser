@@ -31,6 +31,7 @@ import {
 import { Visualization } from './visualization/Visualization'
 
 export const NODE_ON_CANVAS_CREATE = 'NODE_ON_CANVAS_CREATE'
+export const NODE_PROP_UPDATE = 'NODE_PROP_UPDATE'
 
 export type GraphInteraction =
   | 'NODE_EXPAND'
@@ -38,6 +39,7 @@ export type GraphInteraction =
   | 'NODE_DISMISSED'
   | 'NODE_ON_CANVAS_CREATE'
   | typeof NODE_ON_CANVAS_CREATE
+  | typeof NODE_PROP_UPDATE
 
 export type GraphInteractionCallBack = (
   event: GraphInteraction,

@@ -30,7 +30,8 @@ export const DETAILS_PANE_STEP_SIZE = 1000
 export function DetailsPane({
   vizItem,
   graphStyle,
-  nodeInspectorWidth
+  nodeInspectorWidth,
+  onGraphInteraction
 }: DetailsPaneProps): JSX.Element {
   const [maxPropertiesCount, setMaxPropertiesCount] = useState(
     DETAILS_PANE_STEP_SIZE
@@ -93,6 +94,7 @@ export function DetailsPane({
           moreStep={DETAILS_PANE_STEP_SIZE}
           totalNumItems={allItemProperties.length}
           nodeInspectorWidth={nodeInspectorWidth}
+          onGraphInteraction={onGraphInteraction}
         />
       </PaneBody>
     </PaneWrapper>
