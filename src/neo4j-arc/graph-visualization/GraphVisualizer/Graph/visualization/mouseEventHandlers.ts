@@ -38,13 +38,14 @@ export const nodeEventHandlers = (
   let restartedSimulation = false
   const tolerance = 25
 
-  const onNodeClick = (_event: Event, node: NodeModel) => {
-    const kbEvent = <KeyboardEvent>_event
-    if (kbEvent.altKey) {
-      trigger('nodeAltClicked', node)
-    } else {
-      trigger('nodeClicked', node)
+  const onNodeMouseDown = (_event: KeyboardEvent, node: NodeModel) => {
+    if (_event.altKey || _event.ctrlKey || _event.metaKey || _event.shiftKey) {
+      trigger('nodeAltDown', node)
     }
+  }
+
+  const onNodeClick = (_event: Event, node: NodeModel) => {
+    trigger('nodeClicked', node)
   }
 
   const onNodeDblClick = (_event: Event, node: NodeModel) => {
@@ -116,6 +117,7 @@ export const nodeEventHandlers = (
         .on('drag', dragged)
         .on('end', dragended)
     )
+    .on('mousedown', onNodeMouseDown)
     .on('mouseover', onNodeMouseOver)
     .on('mouseout', onNodeMouseOut)
     .on('click', onNodeClick)

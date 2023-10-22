@@ -146,7 +146,7 @@ export class GraphEventHandlerModel {
     }
   }
 
-  nodeAltClicked(node: NodeModel): void {
+  nodeAltDown(node: NodeModel): void {
     if (!node) {
       return
     }
@@ -285,6 +285,7 @@ export class GraphEventHandlerModel {
       .on('canvasClicked', this.onCanvasClicked.bind(this))
       .on('canvasDblClicked', this.onCanvasDblClicked.bind(this))
       .on('nodeClose', this.nodeClose.bind(this))
+      .on('nodeAltDown', this.nodeAltDown.bind(this))
       .on('nodeClicked', this.nodeClicked.bind(this))
       .on('nodeDblClicked', this.nodeDblClicked.bind(this))
       .on('nodeUnlock', this.nodeUnlock.bind(this))
