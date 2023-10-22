@@ -146,6 +146,14 @@ export class GraphEventHandlerModel {
     }
   }
 
+  nodeAltClicked(node: NodeModel): void {
+    if (!node) {
+      return
+    }
+
+    node.hoverFixed = true
+  }
+
   nodeUnlock(d: NodeModel): void {
     if (!d) {
       return

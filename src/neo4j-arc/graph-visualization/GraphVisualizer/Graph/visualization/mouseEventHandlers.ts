@@ -39,7 +39,12 @@ export const nodeEventHandlers = (
   const tolerance = 25
 
   const onNodeClick = (_event: Event, node: NodeModel) => {
-    trigger('nodeClicked', node)
+    const kbEvent = <KeyboardEvent>_event
+    if (kbEvent.altKey) {
+      trigger('nodeAltClicked', node)
+    } else {
+      trigger('nodeClicked', node)
+    }
   }
 
   const onNodeDblClick = (_event: Event, node: NodeModel) => {
