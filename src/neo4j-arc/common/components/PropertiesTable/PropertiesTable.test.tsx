@@ -20,7 +20,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 
-import { VizItem } from 'neo4j-arc/graph-visualization'
+import { VizItem, NodeModel } from 'neo4j-arc/graph-visualization'
 
 import {
   PropertiesTable,
@@ -62,7 +62,9 @@ describe('<DetailsPane />', () => {
           item: {
             id: 'abc',
             type: 'abc2',
-            propertyList
+            propertyList,
+            source: new NodeModel('1', [], {}, {}),
+            target: new NodeModel('2', [], {}, {})
           }
         }
     }
