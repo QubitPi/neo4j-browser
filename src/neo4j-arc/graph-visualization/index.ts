@@ -35,8 +35,10 @@ export type { DetailsPaneProps } from './GraphVisualizer/DefaultPanelContent/Def
 export type { OverviewPaneProps } from './GraphVisualizer/DefaultPanelContent/DefaultOverviewPane'
 
 export {
+  REL_ON_CANVAS_CREATE,
   NODE_ON_CANVAS_CREATE,
-  NODE_PROP_UPDATE,
-  NODE_LABEL_UPDATE
+  NODE_PROP_UPDATE, 
+  NODE_LABEL_UPDATE,
+  REL_TYPE_UPDATE
 } from './GraphVisualizer/Graph/GraphEventHandlerModel'
 export type { GraphInteractionCallBack } from './GraphVisualizer/Graph/GraphEventHandlerModel'
