@@ -225,11 +225,8 @@ export class Visualization {
   }
 
   drawLine() {
-    return this.container
-      .select('g.layer.relationships')
-      .selectAll<SVGGElement, RelationshipModel>('g.relationship')
-      .append('line')
-      .attr('class', 'newLine')
+    const newRelationShip = new RelationshipModel('df')
+    return this.container.append('line').attr('class', 'relationship')
   }
 
   private updateRelationships() {

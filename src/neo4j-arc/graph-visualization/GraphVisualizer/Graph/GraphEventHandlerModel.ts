@@ -192,6 +192,7 @@ export class GraphEventHandlerModel {
         // draw a line
         if (!this.newLine) {
           this.newLine = this.visualization.drawLine()
+          this.graph.addRelationships([this.newLine])
         }
         this.newLine
           .attr('x1', function () {
@@ -207,9 +208,12 @@ export class GraphEventHandlerModel {
             return y
           })
       }
+      this.visualization.update({
+        updateNodes: true,
+        updateRelationships: true
+      })
+      this.graphModelChanged()
     }
-    this.visualization.update({ updateNodes: true, updateRelationships: true })
-    this.graphModelChanged()
   }
 
   nodeUnlock(d: NodeModel): void {
@@ -252,8 +256,9 @@ export class GraphEventHandlerModel {
   }
 
   onNodeMouseOver(node: NodeModel): void {
-    this.drawingLine = true
     if (!node.contextMenu) {
+      this.drawingLine = true
+      this.selectItem(node)
       this.onItemMouseOver({
         type: 'node',
         item: node
