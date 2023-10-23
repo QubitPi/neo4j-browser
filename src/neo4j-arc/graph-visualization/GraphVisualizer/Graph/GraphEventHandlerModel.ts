@@ -157,6 +157,7 @@ export class GraphEventHandlerModel {
 
     if (!this.drawingLine) {
       this.drawingLine = true
+      console.log('this.drawingLine = ' + this.drawingLine)
 
       node.hoverFixed = false
       node.fx = node.x
@@ -174,7 +175,9 @@ export class GraphEventHandlerModel {
   }
 
   mouseMove(): void {
+    console.log('mouseMove is triggered')
     if (this.drawingLine) {
+      console.log('mouseMove with this.drawingLine = true is triggered')
       const selectedNode = this.selectedItem as NodeModel
       const width = Math.floor(this.visualization.measureSize().width / 2)
       const height = Math.floor(this.visualization.measureSize().height / 2)
@@ -205,6 +208,8 @@ export class GraphEventHandlerModel {
           })
       }
     }
+    this.visualization.update({ updateNodes: true, updateRelationships: true })
+    this.graphModelChanged()
   }
 
   nodeUnlock(d: NodeModel): void {
@@ -247,6 +252,7 @@ export class GraphEventHandlerModel {
   }
 
   onNodeMouseOver(node: NodeModel): void {
+    this.drawingLine = true
     if (!node.contextMenu) {
       this.onItemMouseOver({
         type: 'node',
