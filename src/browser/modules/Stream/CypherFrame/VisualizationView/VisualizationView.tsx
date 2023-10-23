@@ -286,18 +286,19 @@ LIMIT ${maxNewNeighbours}`
 
       const id = properties['id']
       const name = properties['name']
+      const description = properties['description']
       const variableName = `node${id}`
       const labels = (properties['labels'] as string[])
         .map(label => `\`${label}\``)
         .join(':')
 
-      const query = `CREATE (${variableName}:${labels} { id: ${id}, name: "${name}" });`
+      const query = `CREATE (${variableName}:${labels} { id: ${id}, name: "${name}", description: "${description}" });`
 
       this.props.bus.self(
         CYPHER_REQUEST,
         {
           query,
-          params: { labels, id, name },
+          params: { labels, id, name, description },
           queryType: NEO4J_BROWSER_USER_ACTION_QUERY
         },
         (response: any) => {

@@ -257,6 +257,13 @@ describe('Viz rendering', () => {
       'Undefined'
     )
 
+    cy.get('[data-testid="nodeGroups"]')
+      .contains('New Node')
+      .trigger('mouseover')
+      .get('[data-testid="viz-details-pane-properties-table"]')
+      .find('td:nth-child(4)')
+      .should('have.text', 'description')
+
     cy.executeCommand('MATCH (n) DETACH DELETE n')
   })
 })

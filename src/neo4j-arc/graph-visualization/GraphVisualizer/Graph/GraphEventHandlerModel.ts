@@ -239,8 +239,14 @@ export class GraphEventHandlerModel {
       new NodeModel(
         newId.toString(),
         ['Undefined'],
-        { name: 'New Node' },
-        { name: 'string' }
+        {
+          name: 'New Node',
+          description: 'New Node'
+        },
+        {
+          name: 'string',
+          description: 'string'
+        }
       )
     ])
     this.visualization.update({ updateNodes: true, updateRelationships: true })
@@ -249,6 +255,7 @@ export class GraphEventHandlerModel {
     this.onGraphInteraction(NODE_ON_CANVAS_CREATE, {
       id: newId,
       name: 'New Node',
+      description: 'New Node',
       labels: ['Undefined']
     })
   }
