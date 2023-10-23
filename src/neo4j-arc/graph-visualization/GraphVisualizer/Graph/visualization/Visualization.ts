@@ -54,7 +54,7 @@ type MeasureSizeFn = () => { width: number; height: number }
 export class Visualization {
   private readonly root: Selection<SVGElement, unknown, BaseType, unknown>
   private baseGroup: Selection<SVGGElement, unknown, BaseType, unknown>
-  private rect: Selection<SVGRectElement, unknown, BaseType, unknown>
+  public rect: Selection<SVGRectElement, unknown, BaseType, unknown>
   private container: Selection<SVGGElement, unknown, BaseType, unknown>
   private geometry: GraphGeometryModel
   private zoomBehavior: ZoomBehavior<SVGElement, unknown>
@@ -73,7 +73,7 @@ export class Visualization {
 
   constructor(
     element: SVGElement,
-    private measureSize: MeasureSizeFn,
+    public measureSize: MeasureSizeFn,
     onZoomEvent: (limitsReached: ZoomLimitsReached) => void,
     onDisplayZoomWheelInfoMessage: () => void,
     private graph: GraphModel,
@@ -113,6 +113,9 @@ export class Visualization {
         if (!this.draw) {
           return this.trigger('canvasDblClicked')
         }
+      })
+      .on('mousemove', () => {
+        return this.trigger('mousemove')
       })
 
     this.container = this.baseGroup.append('g')
@@ -219,6 +222,14 @@ export class Visualization {
 
     this.forceSimulation.updateNodes(this.graph)
     this.forceSimulation.updateRelationships(this.graph)
+  }
+
+  drawLine() {
+    return this.container
+      .select('g.layer.relationships')
+      .selectAll<SVGGElement, RelationshipModel>('g.relationship')
+      .append('line')
+      .attr('class', 'newLine')
   }
 
   private updateRelationships() {

@@ -18,6 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import * as d3 from 'd3'
 import { GraphModel } from '../../models/Graph'
 import { NodeModel } from '../../models/Node'
 import { RelationshipModel } from '../../models/Relationship'
@@ -29,6 +30,7 @@ import {
   mapRelationships
 } from '../../utils/mapper'
 import { Visualization } from './visualization/Visualization'
+import { BaseType } from 'd3-selection'
 
 export const NODE_ON_CANVAS_CREATE = 'NODE_ON_CANVAS_CREATE'
 export const NODE_PROP_UPDATE = 'NODE_PROP_UPDATE'
@@ -55,6 +57,8 @@ export class GraphEventHandlerModel {
   onItemSelected: (item: VizItem) => void
   onGraphInteraction: GraphInteractionCallBack
   selectedItem: NodeModel | RelationshipModel | null
+  drawingLine = false
+  newLine: any = null
 
   constructor(
     graph: GraphModel,
@@ -151,7 +155,56 @@ export class GraphEventHandlerModel {
       return
     }
 
-    node.hoverFixed = true
+    if (!this.drawingLine) {
+      this.drawingLine = true
+
+      node.hoverFixed = false
+      node.fx = node.x
+      node.fy = node.y
+      if (!node.selected) {
+        this.selectItem(node)
+        this.onItemSelected({
+          type: 'node',
+          item: node
+        })
+      }
+
+      // this.visualization.forceSimulation.simulation.stop()
+    }
+  }
+
+  mouseMove(): void {
+    if (this.drawingLine) {
+      const selectedNode = this.selectedItem as NodeModel
+      const width = Math.floor(this.visualization.measureSize().width / 2)
+      const height = Math.floor(this.visualization.measureSize().height / 2)
+
+      const m = d3.pointer(this.visualization.rect)
+      const x = Math.max(0, Math.min(width, m[0]))
+      const y = Math.max(0, Math.min(height, m[1]))
+      // debounce - only start drawing line if it gets a bit big
+      const dx = selectedNode.x - x
+      const dy = selectedNode.y - y
+      if (Math.sqrt(dx * dx + dy * dy) > 10) {
+        // draw a line
+        if (!this.newLine) {
+          this.newLine = this.visualization.drawLine()
+        }
+        this.newLine
+          .attr('x1', function () {
+            return selectedNode.x
+          })
+          .attr('y1', function () {
+            return selectedNode.y
+          })
+          .attr('x2', function () {
+            return x
+          })
+          .attr('y2', function () {
+            return y
+          })
+      }
+    }
   }
 
   nodeUnlock(d: NodeModel): void {
@@ -285,10 +338,12 @@ export class GraphEventHandlerModel {
       .on('canvasClicked', this.onCanvasClicked.bind(this))
       .on('canvasDblClicked', this.onCanvasDblClicked.bind(this))
       .on('nodeClose', this.nodeClose.bind(this))
-      .on('nodeAltDown', this.nodeAltDown.bind(this))
       .on('nodeClicked', this.nodeClicked.bind(this))
       .on('nodeDblClicked', this.nodeDblClicked.bind(this))
       .on('nodeUnlock', this.nodeUnlock.bind(this))
+
+      .on('nodeAltDown', this.nodeAltDown.bind(this))
+      .on('mousemove', this.mouseMove.bind(this))
     this.onItemMouseOut()
   }
 }
