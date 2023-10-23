@@ -29,7 +29,8 @@ import {
   GraphModel,
   GraphVisualizer,
   NODE_ON_CANVAS_CREATE,
-  NODE_PROP_UPDATE
+  NODE_PROP_UPDATE,
+  NODE_LABEL_UPDATE
 } from 'neo4j-arc/graph-visualization'
 
 import { StyledVisContainer } from './VisualizationView.styled'
@@ -278,6 +279,34 @@ LIMIT ${maxNewNeighbours}`
   }
 
   onGraphInteraction: GraphInteractionCallBack = (event, properties) => {
+    if (event == NODE_LABEL_UPDATE) {
+      if (properties == null) {
+        throw new Error(
+          'A property map with nodeId, oldLabel, and newLabel keys are required'
+        )
+      }
+
+      const nodeId = properties['nodeId']
+      const oldLabel = `\`${properties['oldLabel']}\``
+      const newLabel = `\`${properties['newLabel']}\``
+
+      const query = `MATCH(n) WHERE ID(n) = ${nodeId} REMOVE n:${oldLabel} SET n:${newLabel}`
+      console.log(query)
+      this.props.bus.self(
+        CYPHER_REQUEST,
+        {
+          query,
+          params: { nodeId, oldLabel, newLabel },
+          queryType: NEO4J_BROWSER_USER_ACTION_QUERY
+        },
+        (response: any) => {
+          if (!response.success) {
+            throw new Error(response.error)
+          }
+        }
+      )
+    }
+
     if (event == NODE_PROP_UPDATE) {
       if (properties == null) {
         throw new Error('')

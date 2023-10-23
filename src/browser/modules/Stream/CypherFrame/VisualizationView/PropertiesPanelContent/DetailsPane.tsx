@@ -83,6 +83,8 @@ export function DetailsPane({
                   label,
                   propertyKeys: vizItem.item.propertyList.map(p => p.key)
                 }}
+                onGraphInteraction={onGraphInteraction}
+                nodeId={vizItem.item.id}
               />
             )
           })}
