@@ -31,7 +31,9 @@
 
     <link rel="preload" href="/docs/assets/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font">
     <link rel="stylesheet" href="/docs/assets/css/site.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="shortcut icon" href="https://neo4j.com/wp-content/themes/neo4jweb/favicon.ico" />
 
@@ -75,7 +77,7 @@ mixpanel.track("Page View", {
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
 
-      <img class="navbar-logo" src="https://dist.neo4j.com/wp-content/uploads/20210422142941/neo4j-logo-2020.svg" alt="Neo4j Docs" />
+      <img class="navbar-logo" src="https://dist.neo4j.com/wp-content/uploads/20230926084108/Logo_FullColor_RGB_TransBG.svg" alt="Neo4j Docs" />
       <a href="/docs/" class="navbar-item no-left-padding" aria-label="Docs">
         Docs
       </a>
@@ -117,6 +119,7 @@ mixpanel.track("Page View", {
                 <li><a href="/docs/status-codes/current/" class="project-link">Status Codes</a></li>
                 <li><a href="/docs/java-reference/current/" class="project-link">Java Reference</a></li>
                 <li><a href="/docs/kerberos-add-on/current/" class="project-link">Kerberos Add-on</a></li>
+                <li><a href="/docs/cdc/current/" class="project-link">Change Data Capture (CDC)</a></li>
               </ul>
             </div>
 
@@ -379,24 +382,11 @@ If you typed the URL of this page manually, please double check that you entered
 </div>
 <footer class="footer">
   <div class="wrapper">
-  <div class="column">
-    <div class="logo-footer"></div>
-    <p>© <span id="footer-copyright-year">2023</span> Neo4j, Inc.<br>
-      <a href="https://neo4j.com/terms/">Terms</a> | <a href="https://neo4j.com/privacy-policy/">Privacy </a> | <a href="https://neo4j.com/sitemap/">Sitemap</a></p>
-    <p>Neo4j<sup>®</sup>, Neo Technology<sup>®</sup>, Cypher<sup>®</sup>, Neo4j<sup>®</sup> Bloom<sup>™</sup> and
-      Neo4j<sup>®</sup> Aura<sup>™</sup> are registered trademarks
-      of Neo4j, Inc. All other marks are owned by their respective companies.</p>
-  </div>
 
-  <div class="column">
-    <h2><a href="https://neo4j.com/contact-us/?ref=footer">Contact Us →</a></h2>
-    <p>US: 1-855-636-4532<br>
-      Sweden +46 171 480 113<br>
-      UK: +44 20 3868 3223<br>
-      France: +33 (0) 1 88 46 13 20<br>
-      <!--Germany: +49 (0)89 26204 6300</p>-->
-    </p>
+  <div class="column logo">
+    <div class="logo-footer"></div>
   </div>
+  
   <div class="column links">
     <h2>Learn</h2>
     <ul>
@@ -419,6 +409,25 @@ If you typed the URL of this page manually, please double check that you entered
       <li class="speaker-program"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdEcNnMruES5iwvOVYovmS1D_P1ZL_HdUOitFrwrvruv5PZvA/viewform">Want to Speak?</a></li>
     </ul>
   </div>
+  <div class="column links">
+    <h2><a href="https://neo4j.com/contact-us/?ref=footer">Contact Us →</a></h2>
+    <ul>
+      <li>US: 1-855-636-4532</li>
+      <li>Sweden +46 171 480 113</li>
+      <li>UK: +44 20 3868 3223</li>
+      <li>France: +33 (0) 1 88 46 13 20</li>
+    </ul>
+  </div>
+
+    <div class="column">
+    <p>© <span id="footer-copyright-year">2023</span> Neo4j, Inc.<br>
+      <a href="https://neo4j.com/terms/">Terms</a> | <a href="https://neo4j.com/privacy-policy/">Privacy </a> | <a href="https://neo4j.com/sitemap/">Sitemap</a></p>
+    <p>Neo4j<sup>®</sup>, Neo Technology<sup>®</sup>, Cypher<sup>®</sup>, Neo4j<sup>®</sup> Bloom<sup>™</sup> and
+      Neo4j<sup>®</sup> Aura<sup>™</sup> are registered trademarks
+      of Neo4j, Inc. All other marks are owned by their respective companies.</p>
+  </div>
+
+  
 </div>
 </footer>
 
