@@ -26,6 +26,8 @@
 </script>
 <!-- End Hotjar Tracking code -->
     <title>On-Canvas Operations - Neo4j Browser</title>
+    <link rel="prev" href="../product-analytics/">
+    <link rel="next" href="../../reference-commands/">
       <meta name="description" content="On-Canvas Operations">
 <link rel="stylesheet" href="https://neo4j.com/wp-content/themes/neo4jweb/assets/neo4j-react-modules-assets/search-preact/chunkless/bundle.css" />
 <link rel="stylesheet" href="https://neo4j.com/wp-content/themes/neo4jweb/assets/neo4j-react-modules-assets/search-preact/chunkless/utilities.min.css" />
@@ -387,6 +389,9 @@ mixpanel.track("Page View", {
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../product-analytics/">Product analytics</a>
   </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="./">On-Canvas Operations</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -419,6 +424,9 @@ mixpanel.track("Page View", {
     <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../">Neo4j Browser</a></li>
+    <li><a href="../">
+        Browser operations
+    </a></li>
     <li><a href="./">
         On-Canvas Operations
     </a></li>
@@ -459,8 +467,25 @@ mixpanel.track("Page View", {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_editing_the_node_properties_in_inspector_panel"><a class="anchor" href="#_editing_the_node_properties_in_inspector_panel"></a>Editing the Node Properties in Inspector Panel</h2>
+<h2 id="_editing_the_node_label_and_properties_in_inspector_panel"><a class="anchor" href="#_editing_the_node_label_and_properties_in_inspector_panel"></a>Editing the Node Label and Properties in Inspector Panel</h2>
 <div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Make sure APOC plugin is enabled in Neo4J database:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../_images/enable-apoc.png" alt="enable apoc" width="600"></span></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p><strong>Clicking the property value</strong> in node inspector panel will make that property editable and un-clicking the text box
 (by for example clicking somewhere else) will persist the new value into Neo4J database:</p>
@@ -468,8 +493,19 @@ mixpanel.track("Page View", {
 <div class="paragraph">
 <p><span class="image"><img src="../../_images/modifying-node-properties-example.png" alt="modifying node properties example" width="600"></span></p>
 </div>
+<div class="paragraph">
+<p>Similary, we can modify node label:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../_images/modifying-node-label-example.png" alt="modifying node label example" width="600"></span></p>
 </div>
 </div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../product-analytics/">Product analytics</a></span>
+
+  <span class="next"><a href="../../reference-commands/">Command reference</a></span>
+</nav>
     <div class="feedback">
     <div class="header question">
         <p><strong>Was this page helpful?</strong></p>
