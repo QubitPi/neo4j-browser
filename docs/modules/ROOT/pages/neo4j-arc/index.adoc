@@ -1,8 +1,37 @@
-:description: This section describes the neo4j-browser internals, including its architecture and components
+:description: This section describes the neo4j-arc, including its architecture and components
+
+[[neo4j-arc]]
+= Neo4J Arc
+
+== Installing Library
+
+Neo4j Arc has a https://blog.bitsrc.io/understanding-peer-dependencies-in-javascript-dbdb4ab5a7be[peer dependency] of
+neo4j-driver-core 5.9.2, so we will also install it along the way:
+
+[source,bash]
+----
+yarn add neo4j-devtools-arc neo4j-driver-core@5.9.2
+----
+
+To manually install:
+
+yarn && yarn build
+
+In App: 
+
+yarn add ...
+yarn && yarn start
 
 
-[[internals]]
+
+
+
+
+
+
 = Neo4J Browser Internals
+
+
 
 The Neo4J Browser is logically composed of 2 parts:
 
