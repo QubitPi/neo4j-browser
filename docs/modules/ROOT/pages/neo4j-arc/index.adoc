@@ -13,25 +13,86 @@ neo4j-driver-core 5.9.2, so we will also install it along the way:
 yarn add neo4j-devtools-arc neo4j-driver-core@5.9.2
 ----
 
-To manually install:
+== Basic Usage
 
-yarn && yarn build
+[source,typescript]
+----
+import { BasicNode, BasicRelationship, GraphVisualizer } from "neo4j-devtools-arc";
 
-In App: 
+export default function MyGraphComponent(): JSX.Element {
 
-yarn add ...
-yarn && yarn start
+  const isFullscreen = true;
+  const graphData = selectGraphData();
 
+  const [hasVis, setHasVis] = useState<boolean>(true);
+  const [visElement, setVisElement] = useState<null | {
+    svgElement: unknown;
+    graphElement: unknown;
+    type: "plan" | "graph";
+  }>(null); 
 
+  const nodes: BasicNode[] = [
+    {
+      id: "1",
+      labels: ["Person"],
+      properties: {
+        name: "Jack",
+        age: "20"
+      },
+      propertyTypes: {
+        name: "string",
+        age: "number"
+      }
+    },
+    {
+      id: "2",
+      labels: ["React"],
+      properties: {
+        name: "ReactJS"
+      },
+      propertyTypes: {
+        name: "string",
+      }
+    }
+  ]
 
+  const links: BasicRelationship[] = [
+    {
+      id: "3",
+      startNodeId: "1",
+      endNodeId: "2",
+      type: "likes",
+      properties: {},
+      propertyTypes: {}
+    }
+  ]
 
+  return (
+    <GraphVisualizer
+      maxNeighbours={100}
+      hasTruncatedFields={false}
+      nodes={nodes}
+      autocompleteRelationships={false}
+      relationships={links}
+      isFullscreen={isFullscreen}
+      assignVisElement={(svgElement: any, graphElement: any) => {
+        setVisElement({ svgElement, graphElement, type: "graph" });
+        setHasVis(true);
+      }}
+      nodeLimitHit={false}
+      getAutoCompleteCallback={undefined}
+      wheelZoomRequiresModKey={!isFullscreen}
+      wheelZoomInfoMessageEnabled={false}
+      useGeneratedDefaultColors={false}
+      initialZoomToFit={true}
+    />
+  );
+}
+----
 
-
-
+image:basic-example.png[width=900]
 
 = Neo4J Browser Internals
-
-
 
 The Neo4J Browser is logically composed of 2 parts:
 
@@ -55,7 +116,7 @@ TypeDoc
 image:neo4j-browser.png[width=900]
 
 * The orange triangle labled with "On Canvas Interaction" is discussed in detail in
-  link:internals/graph-interactions[graph interactions] section
+  link:neo4j-arc/graph-interactions[graph interactions] section
 * Sentry.io is initialized in the top index.tsx
 * AppInit.tsx is responsible for several initializations:
 +
