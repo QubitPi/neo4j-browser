@@ -26,8 +26,10 @@ Browser has a subproject of re-usable components bundled together and exposed as
 
 ## Development
 
-Running Neo4j Browser locally requires Node.js (^12.4.0) and for dependencies we use yarn (`npm install -g yarn`).
-To install dependencies and then start the development server at `http://localhost:8080`:
+Running Neo4j Browser locally requires Node.js (^12.4.0, below 18) and for dependencies we use yarn
+(`npm install -g yarn`). To install dependencies and then start the development server at `http://localhost:8080`:
+
+> To switch node version with a version manager, please try [nvm](https://qubitpi.github.io/hashicorp-aws/blog/nvm)
 
 ```shell
 yarn install
