@@ -566,6 +566,25 @@ export default function MyGraphComponent(): JSX.Element {
 <div class="paragraph">
 <p><span class="image"><img src="../_images/basic-example.png" alt="basic example" width="900"></span></p>
 </div>
+<div class="sect2">
+<h3 id="_options"><a class="anchor" href="#_options"></a>Options</h3>
+<div class="sect3">
+<h4 id="_turnning_off_inspection_panel"><a class="anchor" href="#_turnning_off_inspection_panel"></a>Turnning Off Inspection Panel</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">export default function MyGraphComponent(): JSX.Element {
+
+  return (
+    &lt;GraphVisualizer
+      ...
+      showNodeInspectorPanel={false}
+    /&gt;
+  );
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <h1 id="_neo4j_browser_internals" class="sect0"><a class="anchor" href="#_neo4j_browser_internals"></a>Neo4J Browser Internals</h1>
