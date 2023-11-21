@@ -64,12 +64,32 @@ describe('<GraphVisualizer />', () => {
   const renderComponent = ({
     showNodeInspectorPanel = true
   }: RenderComponentProps) => {
+    if (showNodeInspectorPanel) {
+      // we never pass showNodeInspectorPanel in this case to test the "default behavior"
+      return render(
+        <GraphVisualizer
+          maxNeighbours={100}
+          hasTruncatedFields={false}
+          nodes={nodes}
+          autocompleteRelationships={true} // "true" prevents "undefined (reading 'baseVal')" test error
+          relationships={links}
+          isFullscreen={isFullscreen}
+          nodeLimitHit={false}
+          getAutoCompleteCallback={undefined}
+          wheelZoomRequiresModKey={!isFullscreen}
+          wheelZoomInfoMessageEnabled={false}
+          useGeneratedDefaultColors={false}
+          initialZoomToFit={false}
+        />
+      )
+    }
+
     return render(
       <GraphVisualizer
         maxNeighbours={100}
         hasTruncatedFields={false}
         nodes={nodes}
-        autocompleteRelationships={false}
+        autocompleteRelationships={true}
         relationships={links}
         isFullscreen={isFullscreen}
         nodeLimitHit={false}
@@ -77,7 +97,8 @@ describe('<GraphVisualizer />', () => {
         wheelZoomRequiresModKey={!isFullscreen}
         wheelZoomInfoMessageEnabled={false}
         useGeneratedDefaultColors={false}
-        initialZoomToFit={true}
+        initialZoomToFit={false}
+        showNodeInspectorPanel={false}
       />
     )
   }
@@ -96,9 +117,9 @@ describe('<GraphVisualizer />', () => {
     renderComponent({ showNodeInspectorPanel: false })
 
     expect(
-      screen.getByRole('button', {
+      screen.queryByRole('button', {
         name: 'Collapse the node properties display'
       })
-    ).not.toBeInTheDocument()
+    ).toBeNull()
   })
 })
