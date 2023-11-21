@@ -506,16 +506,6 @@ neo4j-driver-core 5.9.2, so we will also install it along the way:</p>
 
 export default function MyGraphComponent(): JSX.Element {
 
-  const isFullscreen = true;
-  const graphData = selectGraphData();
-
-  const [hasVis, setHasVis] = useState&lt;boolean&gt;(true);
-  const [visElement, setVisElement] = useState&lt;null | {
-    svgElement: unknown;
-    graphElement: unknown;
-    type: "plan" | "graph";
-  }&gt;(null);
-
   const nodes: BasicNode[] = [
     {
       id: "1",
@@ -552,6 +542,8 @@ export default function MyGraphComponent(): JSX.Element {
     }
   ]
 
+  const isFullscreen = true;
+
   return (
     &lt;GraphVisualizer
       maxNeighbours={100}
@@ -560,10 +552,6 @@ export default function MyGraphComponent(): JSX.Element {
       autocompleteRelationships={false}
       relationships={links}
       isFullscreen={isFullscreen}
-      assignVisElement={(svgElement: any, graphElement: any) =&gt; {
-        setVisElement({ svgElement, graphElement, type: "graph" });
-        setHasVis(true);
-      }}
       nodeLimitHit={false}
       getAutoCompleteCallback={undefined}
       wheelZoomRequiresModKey={!isFullscreen}
