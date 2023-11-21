@@ -80,6 +80,23 @@ export default function MyGraphComponent(): JSX.Element {
 
 image:basic-example.png[width=900]
 
+=== Options
+
+==== Turnning Off Inspection Panel
+
+[source,typescript]
+----
+export default function MyGraphComponent(): JSX.Element {
+
+  return (
+    <GraphVisualizer
+      ...
+      showNodeInspectorPanel={false}
+    />
+  );
+}
+----
+
 = Neo4J Browser Internals
 
 The Neo4J Browser is logically composed of 2 parts:
