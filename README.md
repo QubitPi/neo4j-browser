@@ -1,4 +1,4 @@
-# Neo4j Browser
+# Neo4j Browser <sup>![Node Version Badge is Missing][node version badge]</sup>
 
 [![npm registry][npm registry]](https://img.shields.io/npm/v/neo4j-devtools-arc?logo=npm&style=for-the-badge)
 
@@ -80,4 +80,5 @@ CYPRESS_BASE_URL=<url to reach the browser to test> (default http://localhost:80
 
 Example: `CYPRESS_E2E_TEST_ENV="local" CYPRESS_BASE_URL=http://localhost:30000 cypress open --env server=4.2`
 
+[node version badge]: https://img.shields.io/badge/NODE-≥12.4.0%20<18.0.0-339933?logo=Node.js&logoColor=white&labelColor=66cc33&style=for-the-badge
 [npm registry]: https://img.shields.io/npm/v/neo4j-devtools-arc?logo=npm&style=for-the-badge
