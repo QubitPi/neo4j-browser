@@ -245,7 +245,7 @@ export class GraphEventHandlerModel {
 
   onCanvasDblClicked(): void {
     const transientId: string =
-      'transient' + Math.random().toString(36).slice(2)
+      'transient-' + Math.random().toString(36).slice(2)
 
     this.graph.addNodes([
       new NodeModel(
@@ -298,7 +298,7 @@ export class GraphEventHandlerModel {
       this.altCreatedRelTargetNode = node
 
       const transientId: string =
-        'transient' + Math.random().toString(36).slice(2)
+        'transient-' + Math.random().toString(36).slice(2)
 
       const altCreatedRel: RelationshipModel = new RelationshipModel(
         transientId,
