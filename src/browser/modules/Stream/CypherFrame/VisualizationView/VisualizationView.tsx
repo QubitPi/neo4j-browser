@@ -430,7 +430,6 @@ LIMIT ${maxNewNeighbours}`
       )
 
       const cmd = 'MATCH (n) RETURN n;'
-
       const action = executeCommand(cmd, { source: commandSources.rerunFrame })
       this.props.bus.send(action.type, action)
     }

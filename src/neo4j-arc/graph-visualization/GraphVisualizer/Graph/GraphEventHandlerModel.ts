@@ -40,7 +40,6 @@ export type GraphInteraction =
   | 'NODE_EXPAND'
   | 'NODE_UNPINNED'
   | 'NODE_DISMISSED'
-  | 'NODE_ON_CANVAS_CREATE'
   | typeof NODE_ON_CANVAS_CREATE
   | typeof NODE_PROP_UPDATE
   | typeof NODE_LABEL_UPDATE
