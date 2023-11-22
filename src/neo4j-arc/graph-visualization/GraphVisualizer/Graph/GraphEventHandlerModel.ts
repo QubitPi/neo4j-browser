@@ -244,27 +244,6 @@ export class GraphEventHandlerModel {
   }
 
   onCanvasDblClicked(): void {
-    const transientId: string =
-      'transient-' + Math.random().toString(36).slice(2)
-
-    this.graph.addNodes([
-      new NodeModel(
-        transientId,
-        ['Undefined'],
-        {
-          name: 'New Node',
-          description: 'New Node'
-        },
-        {
-          name: 'string',
-          description: 'string'
-        },
-        transientId
-      )
-    ])
-    this.visualization.update({ updateNodes: true, updateRelationships: true })
-    this.graphModelChanged()
-
     this.onGraphInteraction(NODE_ON_CANVAS_CREATE, {
       name: 'New Node',
       description: 'New Node',
