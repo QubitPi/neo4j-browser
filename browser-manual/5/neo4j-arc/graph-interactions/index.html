@@ -488,7 +488,7 @@ mixpanel.track("Page View", {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>We define <strong>graph interactions</strong> as any <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">mouse</a> and
+<p>We define <strong>graph interactions</strong> as any <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">mouse</a> or
 <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent">keyboard</a> events on the
 <a href="../../visual-tour/index.html#frame-views"><em>Graph</em> frame view</a></p>
 </div>
@@ -558,10 +558,6 @@ click on canvas. We will follow the steps above by first defining the event hand
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">  onCanvasDblClicked(): void {
-    this.graph.addNodes([ new NodeModel(...) ])
-    this.visualization.update({ updateNodes: true, updateRelationships: true })
-    this.graphModelChanged()
-
     this.onGraphInteraction(NODE_ON_CANVAS_CREATE, { name: 'New Node', labels: ['Undefined'] })
   }</code></pre>
 </div>
@@ -574,12 +570,13 @@ click on canvas. We will follow the steps above by first defining the event hand
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When we add a new node to the graph, it is important to update the visual of the graph using <code>visualization.update()</code>
-and the stats panel with <code>graphModelChanged()</code></p>
+<p>When we add a new node to the graph, we do not update the visual of the graph on current canvas, because this update
+process involves lots of organic parts and taking care all of them is error-prone</p>
 </div>
 <div class="paragraph">
-<p>We would also like to persist the new node to database so that refreshing the page or re-login shall still render this
-node. Therefore we invoke <code>onGraphInteraction()</code> above. The details of this method will be disucssed below</p>
+<p>In stead, we persist the new node to database first (by invoking <code>onGraphInteraction()</code> above. The details of this
+method will be disucssed below) and later we trigger a new frame so all the refreshed data will be put onto a new
+canvas, including the new node.</p>
 </div>
 </td>
 </tr>
@@ -625,7 +622,15 @@ function</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">  onGraphInteraction: GraphInteractionCallBack = (event, properties) =&gt; {
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import {
+  commandSources,
+  executeCommand
+} from 'shared/modules/commands/commandsDuck'
+
+...
+
+
+  onGraphInteraction: GraphInteractionCallBack = (event, properties) =&gt; {
     if (event == NODE_ON_CANVAS_CREATE) {
       if (properties == null) {
         throw new Error(
@@ -652,12 +657,31 @@ function</p>
           }
         }
       )
+
+      const cmd = 'MATCH (n) RETURN n;'
+      const action = executeCommand(cmd, { source: commandSources.rerunFrame })
+      this.props.bus.send(action.type, action)
     }
   }</code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>The complete implementation is in <a href="https://github.com/QubitPi/neo4j-browser/pull/7">this PR</a> as a reference</p>
+<p>We trigger the aforementioned new fram using the last 3 lines above</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The complete implementation is in <a href="https://github.com/QubitPi/neo4j-browser/pull/7">this PR</a> and
+<a href="https://github.com/QubitPi/neo4j-browser/pull/26">this PR (optimization)</a> as references</p>
 </div>
 </div>
 </div>
