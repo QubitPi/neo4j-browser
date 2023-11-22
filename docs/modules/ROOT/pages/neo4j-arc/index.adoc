@@ -176,6 +176,6 @@ and component A is a user registration form, then there is no concept of state S
 B is just a one-time username/password message. Application state that is not shared should not go into Redux, it should
 go directly into the component that needs it.
 
-This is where [suber](https://github.com/oskarhane/suber) comes in.
+This is where https://github.com/oskarhane/suber[suber] comes in.
 
 image:redux-vs-suber.png[width=900]
