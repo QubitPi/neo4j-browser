@@ -403,9 +403,7 @@ LIMIT ${maxNewNeighbours}`
 
     if (event == NODE_ON_CANVAS_CREATE) {
       if (properties == null) {
-        throw new Error(
-          'A property map with name, and labels keys are required'
-        )
+        throw new Error('NODE_ON_CANVAS_CREATE: properties map is required')
       }
 
       const name = properties['name']
@@ -431,7 +429,7 @@ LIMIT ${maxNewNeighbours}`
         }
       )
 
-      const cmd = 'MATCH (n) RETURN n LIMIT 25'
+      const cmd = 'MATCH (n) RETURN n;'
 
       const action = executeCommand(cmd, { source: commandSources.rerunFrame })
       this.props.bus.send(action.type, action)
