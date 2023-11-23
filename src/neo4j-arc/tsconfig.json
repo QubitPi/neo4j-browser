@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "types": [],
     "skipLibCheck": true,
     "jsx": "react",
     "sourceMap": true,
