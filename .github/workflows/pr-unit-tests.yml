@@ -15,6 +15,7 @@ jobs:
           node-version-file: '.nvmrc'
       - run: npm -g install yarn
       - run: yarn install --frozen-lockfile
+      - run: rm -rf node_modules/i18next
       - name: run unit tests
         env:
           NODE_OPTIONS: '--max-old-space-size=8192'
