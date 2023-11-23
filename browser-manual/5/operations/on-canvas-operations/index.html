@@ -495,46 +495,6 @@ mixpanel.track("Page View", {
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>a transient ID prefixed with "transient-" followed by a random string. For example "transient-rxnnzr6t4x"</p>
-<div class="literalblock">
-<div class="content">
-<pre>[NOTE]
-====</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>The reason that the ID being transient is due to the fact that this ID won't be persisted into database. Refreshing
-the browser will replace this transient ID with a database-generated ID (in the form of a number, such as 65).</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Normally, neo4j-browser feeds into neo4j-arc, which is the graphing module of neo4j-browser, with a set of
-fully-hydrated set of nodes and relationships. This results in the design in neo4j-arc which is: to render a node or
-relationship, the ID of it must be provided (i.e. a required argument to node/rel constructor).</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Generating a new node by double-clicking, however, is an operation manged by neo4j-arc, which by design is not
-responsible for generating and managing node/relationship ID's. But to implement the "realtime editing" effect, the
-new node/rel ID has to be genreated at the beginning.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>To resolve the conflict between original neo4j-browser design and on-canvas operation, any node/rel generated
-"on-canvas" will have this transient ID.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>====</pre>
-</div>
-</div>
-</li>
-<li>
 <p>a label of "Undefined"</p>
 </li>
 <li>
@@ -545,7 +505,7 @@ new node/rel ID has to be genreated at the beginning.</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_editing_the_node_label_and_properties_in_inspector_panel"><a class="anchor" href="#_editing_the_node_label_and_properties_in_inspector_panel"></a>Editing the Node Label and Properties in Inspector Panel</h2>
+<h2 id="_editing_the_node_label_and_properties_in_node_inspection_panel"><a class="anchor" href="#_editing_the_node_label_and_properties_in_node_inspection_panel"></a>Editing the Node Label and Properties in Node Inspection Panel</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
