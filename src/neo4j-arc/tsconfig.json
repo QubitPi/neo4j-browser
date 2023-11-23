@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "types": [],
     "jsx": "react",
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
