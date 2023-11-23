@@ -38,6 +38,8 @@ import {
   StyledLegendInlineList
 } from './styled'
 
+const { t, i18n } = useTranslation()
+
 type PaneBodySectionHeaderProps = {
   title: string
   numOfElementsVisible: number
