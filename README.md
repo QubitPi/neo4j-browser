@@ -24,7 +24,16 @@ Contributions welcome! More information in our [CONTRIBUTING.md](CONTRIBUTING.md
 
 Browser has a subproject of re-usable components bundled together and exposed as `neo4j-arc`. Rather than set up mono-repo tooling the we've set up eslint to isolate `neo4j-arc` and given it a seperate build step. Code in browser can only to import code from `neo4j-arc` through `neo4j-arc` aliases (as if it was a seperate project) and `neo4j-arc` is not allowed to import any code from outside it's own folder.
 
-## Development
+## Development <sup>![Ts Version Badge is Missing][ts version badge]</sup>
+
+> There are 2 parts within this project
+> 
+> 1. [browser](./src/browser)
+> 2. re-usable graphing library, i.e. [neo4j-arc](./src/neo4j-arc)
+>
+> Each mantains a separate TS version. **Browser's TS version has to align with neo4j-arc's by setting a fixed version
+> at latter's lower bound**. For example, if neo4j-arc's typescript version is `"typescript": "^4.6.2"`, then the
+> browser's has be to the exact version of `"typescript": "4.6.2"`
 
 Running Neo4j Browser locally requires Node.js 16 and for dependencies we use yarn (`npm install -g yarn`). To install 
 dependencies and then start the development server at `http://localhost:8080`:
