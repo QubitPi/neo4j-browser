@@ -6,6 +6,8 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "paths": {
       "neo4j-arc/common": ["./common/index.ts"]
     }

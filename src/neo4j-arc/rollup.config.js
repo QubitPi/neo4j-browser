@@ -2,6 +2,7 @@ import dts from 'rollup-plugin-dts'
 import esbuild from 'rollup-plugin-esbuild'
 import alias from '@rollup/plugin-alias'
 import pkg from './package.json'
+import json from '@rollup/plugin-json'
 
 const importsWithPaths = [
   'monaco-editor/esm/vs/base/parts/quickinput/browser/quickInputList',
@@ -24,7 +25,11 @@ export default [
   {
     input: 'index.ts',
     external: id => dependenciesNotToBundle.includes(id),
-    plugins: [/* handles ts */ esbuild(), alias({ entries: aliasEntries })],
+    plugins: [
+      /* handles ts */ esbuild(),
+      alias({ entries: aliasEntries }),
+      json()
+    ],
     output: [
       {
         file: pkg.main,
@@ -36,7 +41,7 @@ export default [
   // Build types
   {
     input: 'index.ts',
-    plugins: [dts(), alias({ entries: aliasEntries })],
+    plugins: [dts(), alias({ entries: aliasEntries }), json()],
     output: {
       file: pkg.typings,
       format: 'es'
