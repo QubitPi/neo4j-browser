@@ -253,7 +253,7 @@ const availableCommands = [
           put(updateQueryResult(action.requestId, null, 'success'))
         }
         return true
-      } catch (error) {
+      } catch (error: any) {
         if (!action.parentId) {
           put(
             frames.add({
