@@ -1,4 +1,4 @@
-# Neo4j Browser <sup>![Node Version Badge is Missing][node version badge]</sup>
+# Neo4j Browser <sup>![Node Version Badge is Missing][node version badge] ![Ts Version Badge is Missing][ts version badge]</sup>
 
 [![npm registry][npm registry]](https://www.npmjs.com/package/neo4j-devtools-arc)
 
@@ -26,8 +26,8 @@ Browser has a subproject of re-usable components bundled together and exposed as
 
 ## Development
 
-Running Neo4j Browser locally requires Node.js (^12.4.0, below 18) and for dependencies we use yarn
-(`npm install -g yarn`). To install dependencies and then start the development server at `http://localhost:8080`:
+Running Neo4j Browser locally requires Node.js 16 and for dependencies we use yarn (`npm install -g yarn`). To install 
+dependencies and then start the development server at `http://localhost:8080`:
 
 > To switch node version with a version manager, please try [nvm](https://qubitpi.github.io/hashicorp-aws/blog/nvm)
 
@@ -89,5 +89,7 @@ CYPRESS_BASE_URL=<url to reach the browser to test> (default http://localhost:80
 
 Example: `CYPRESS_E2E_TEST_ENV="local" CYPRESS_BASE_URL=http://localhost:30000 cypress open --env server=4.2`
 
-[node version badge]: https://img.shields.io/badge/NODE-≥12.4.0%20<18.0.0-339933?logo=Node.js&logoColor=white&labelColor=66cc33&style=for-the-badge
+[node version badge]: https://img.shields.io/badge/NODE-≥16%20<18.0.0-339933?logo=Node.js&logoColor=white&labelColor=66cc33&style=for-the-badge
 [npm registry]: https://img.shields.io/npm/v/neo4j-devtools-arc?logo=npm&style=for-the-badge
+
+[ts version badge]: https://img.shields.io/badge/TypeScript-≥4.6.2-3178C6?style=for-the-badge&logo=typescript&logoColor=white&labelColor=358EF1
