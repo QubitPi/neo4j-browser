@@ -16,34 +16,17 @@ yarn add react-i18next i18next
 
 === Configuring i18next
 
-Create a new file `i18n.js` beside our `App.tsx` containing following content:
+Create a new file `i18n.ts` beside our `App.tsx` containing following content:
 
 [source,javascript]
 ----
 import i18n from 'i18next'
+import { resources } from 'neo4j-arc/graph-visualization'
 import { initReactI18next } from 'react-i18next'
-
-const resources = {
-  en: {
-    translation: {
-      'graph summary':
-        'Displaying {{nodeCount}} nodes, {{relationshipCount}} relationships.',
-      'Relationship types': 'Relationship types',
-      'Node labels': 'Node labels'
-    }
-  },
-  zh: {
-    translation: {
-      'graph summary': '总计 {{nodeCount}} 个节点, {{relationshipCount}} 条边.',
-      'Relationship types': '关系类型',
-      'Node labels': '节点类型'
-    }
-  }
-}
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en',
+  lng: 'zh',
   interpolation: {
     escapeValue: false
   }
@@ -54,7 +37,8 @@ export default i18n
 
 [NOTE]
 ====
-* The file does not need to be named `i18n.js`, it can be any other filename. Just make sure it is imported accordingly.
+* In the example above, we've configured i18n language to be Simplified Chinese
+* The file does not need to be named `i18n.ts`, it can be any other filename. Just make sure it is imported accordingly.
 * Those interested in the details above can refer to the
   https://qubitpi.gitbook.io/react-i18next/guides/quick-start[react-i18next documentation]
 ====
