@@ -510,34 +510,17 @@ mixpanel.track("Page View", {
 <div class="sect2">
 <h3 id="_configuring_i18next"><a class="anchor" href="#_configuring_i18next"></a>Configuring i18next</h3>
 <div class="paragraph">
-<p>Create a new file <code>i18n.js</code> beside our <code>App.tsx</code> containing following content:</p>
+<p>Create a new file <code>i18n.ts</code> beside our <code>App.tsx</code> containing following content:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">import i18n from 'i18next'
+import { resources } from 'neo4j-arc/graph-visualization'
 import { initReactI18next } from 'react-i18next'
-
-const resources = {
-  en: {
-    translation: {
-      'graph summary':
-        'Displaying {{nodeCount}} nodes, {{relationshipCount}} relationships.',
-      'Relationship types': 'Relationship types',
-      'Node labels': 'Node labels'
-    }
-  },
-  zh: {
-    translation: {
-      'graph summary': '总计 {{nodeCount}} 个节点, {{relationshipCount}} 条边.',
-      'Relationship types': '关系类型',
-      'Node labels': '节点类型'
-    }
-  }
-}
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en',
+  lng: 'zh',
   interpolation: {
     escapeValue: false
   }
@@ -556,7 +539,10 @@ export default i18n</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>The file does not need to be named <code>i18n.js</code>, it can be any other filename. Just make sure it is imported accordingly.</p>
+<p>In the example above, we&#8217;ve configured i18n language to be Simplified Chinese</p>
+</li>
+<li>
+<p>The file does not need to be named <code>i18n.ts</code>, it can be any other filename. Just make sure it is imported accordingly.</p>
 </li>
 <li>
 <p>Those interested in the details above can refer to the
