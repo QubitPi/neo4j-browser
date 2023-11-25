@@ -14,11 +14,13 @@ Default displaed text is in English if left un-translated
 yarn add react-i18next i18next
 ----
 
-=== Configuring i18next
+=== Load Translations
 
-Create a new file `i18n.ts` beside our `App.tsx` containing following content:
+==== Add on i18next Init
 
-[source,javascript]
+We can add the translations on init by create a new file `i18n.ts` beside our `App.tsx` containing following content:
+
+[source,typescript]
 ----
 import i18n from 'i18next'
 import { resources } from 'neo4j-arc/graph-visualization'
@@ -42,6 +44,42 @@ export default i18n
 * Those interested in the details above can refer to the
   https://qubitpi.gitbook.io/react-i18next/guides/quick-start[react-i18next documentation]
 ====
+
+==== Add after Init
+
+We can also add the translations after init:
+
+[source,typescript]
+----
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+
+i18n.use(initReactI18next).init({
+  resources: {},
+  lng: 'zh',
+  interpolation: {
+    escapeValue: false
+  }
+})
+
+export default i18n
+----
+
+[NOTE]
+====
+Note that we have passed in an empty resources object on init. This is necessary because otherwise i18next will try to
+load translations and give us a warning that we are not using a backend.
+====
+
+Then we would include the following logic anywhere we would like to load translations in
+
+[source,typescript]
+----
+import i18next from 'i18next';
+
+i18next.addResources("en", "translation", resources.en.translation);
+i18next.addResources("zh", "translation", resources.zh.translation);
+----
 
 === I18nextProvider
 
