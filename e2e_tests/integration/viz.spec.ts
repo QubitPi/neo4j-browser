@@ -18,8 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { should } from 'chai'
-
 /* global Cypress, cy, before */
 
 const GREY = 'rgb(165, 171, 182)' // Default color for nodes and relationships
