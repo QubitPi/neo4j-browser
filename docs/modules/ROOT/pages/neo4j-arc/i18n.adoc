@@ -9,7 +9,7 @@ Default displaed text is in English if left un-translated
 
 === Intalling https://qubitpi.gitbook.io/i18next/[i18next] and https://qubitpi.gitbook.io/react-i18next/[react-i18next] with https://github.com/i18next/i18next-browser-languageDetector[auto language detector]
 
-[source,javascript]
+[source,shell]
 ----
 yarn add react-i18next i18next i18next-browser-languagedetector
 ----
