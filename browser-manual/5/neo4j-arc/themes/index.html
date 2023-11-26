@@ -501,6 +501,38 @@ access to the provided theme, even when they are multiple levels deep.</p>
 <div class="paragraph">
 <p>Themes are passed down to a component using the <code>theme</code> prop</p>
 </div>
+<div class="paragraph">
+<p>Create a file named <strong>themes.ts</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">export const theme = {
+  frameSidebarBackground: "transparent",
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Load the themes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { ThemeProvider } from "styled-components";
+import { theme } from "./themes";
+
+export default function MyGraphComponent(): JSX.Element {
+
+  const themeData = theme;
+
+  return (
+    &lt;ThemeProvider theme={themeData}&gt;
+      &lt;GraphVisualizer
+      ...
+      /&gt;
+    &lt;/ThemeProvider&gt;
+  );
+}</code></pre>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="../i18n/">Internationalization</a></span>
 
