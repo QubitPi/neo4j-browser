@@ -535,13 +535,15 @@ import { initReactI18next } from 'react-i18next'
 import { resources } from 'neo4j-arc/graph-visualization'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
-i18n.use(LanguageDetector).use(initReactI18next).init({
-  resources,
-  lng: 'zh',
-  interpolation: {
-    escapeValue: false
-  }
-})
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources,
+    interpolation: {
+      escapeValue: false
+    }
+  })
 
 export default i18n</code></pre>
 </div>
@@ -555,9 +557,6 @@ export default i18n</code></pre>
 <td class="content">
 <div class="ulist">
 <ul>
-<li>
-<p>In the example above, we&#8217;ve configured i18n language to be Simplified Chinese</p>
-</li>
 <li>
 <p>The file does not need to be named <code>i18n.ts</code>, it can be any other filename. Just make sure it is imported accordingly.</p>
 </li>
@@ -587,13 +586,15 @@ decided not to install <code>i18next-browser-languagedetector</code> then we do 
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
-i18n.use(LanguageDetector).use(initReactI18next).init({
-  resources: {},
-  lng: 'zh',
-  interpolation: {
-    escapeValue: false
-  }
-})
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources: {},
+    interpolation: {
+      escapeValue: false
+    }
+  })
 
 export default i18n</code></pre>
 </div>
@@ -659,18 +660,24 @@ export default AppInit</code></pre>
 <ol class="arabic">
 <li>
 <p>set up with fixed language, for example</p>
-<div class="literalblock">
-<div class="content">
-<pre>[source,typescript]
-----
-i18n.use(initReactI18next).init({
-  ...
-  lng: 'zh'
-})
-----</pre>
-</div>
+<div class="paragraph">
+<p>The initialization assumes provider pattern around regular App component:</p>
 </div>
 </li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>i18n
+  .use(initReactI18next)
+  .init({
+    ...
+    lng: 'zh'
+  })</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>or, if auto language detection is enabled, try clearing browser cookie and try again.</p>
 </li>
