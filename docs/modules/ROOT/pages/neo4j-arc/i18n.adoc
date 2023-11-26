@@ -32,20 +32,21 @@ import { initReactI18next } from 'react-i18next'
 import { resources } from 'neo4j-arc/graph-visualization'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
-i18n.use(LanguageDetector).use(initReactI18next).init({
-  resources,
-  lng: 'zh',
-  interpolation: {
-    escapeValue: false
-  }
-})
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources,
+    interpolation: {
+      escapeValue: false
+    }
+  })
 
 export default i18n
 ----
 
 [NOTE]
 ====
-* In the example above, we've configured i18n language to be Simplified Chinese
 * The file does not need to be named `i18n.ts`, it can be any other filename. Just make sure it is imported accordingly.
 * Those interested in the details above can refer to the
   https://qubitpi.gitbook.io/react-i18next/guides/quick-start[react-i18next documentation]
@@ -63,13 +64,15 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
-i18n.use(LanguageDetector).use(initReactI18next).init({
-  resources: {},
-  lng: 'zh',
-  interpolation: {
-    escapeValue: false
-  }
-})
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources: {},
+    interpolation: {
+      escapeValue: false
+    }
+  })
 
 export default i18n
 ----
@@ -108,7 +111,6 @@ const App = (): JSX.Element => {
 export default AppInit
 ----
 
-
 == Troubleshooting
 
 === Switching Browser Lanauage Does Not Alter the Displayed Language in Neo4j Browser
@@ -116,13 +118,16 @@ export default AppInit
 Please make sure the i18n is either
 
 1. set up with fixed language, for example
-
-   [source,typescript]
-   ----
-   i18n.use(initReactI18next).init({
-     ...
-     lng: 'zh'
-   })
-   ----
++
+The initialization assumes provider pattern around regular App component:
+[source,typescript]
+----
+i18n
+  .use(initReactI18next)
+  .init({
+    ...
+    lng: 'zh'
+  })
+----
 
 2. or, if auto language detection is enabled, try clearing browser cookie and try again.
