@@ -7,12 +7,17 @@ Default displaed text is in English if left un-translated
 
 == How to Enable i18n in neo4j-arc
 
-=== Intalling https://qubitpi.gitbook.io/react-i18next/[react-i18next]
+=== Intalling https://qubitpi.gitbook.io/i18next/[i18next] and https://qubitpi.gitbook.io/react-i18next/[react-i18next] with https://github.com/i18next/i18next-browser-languageDetector[auto language detector]
 
 [source,javascript]
 ----
-yarn add react-i18next i18next
+yarn add react-i18next i18next i18next-browser-languagedetector
 ----
+
+[NOTE]
+====
+If we choose to have fixed locale, we can opt-out `i18next-browser-languagedetector`
+====
 
 === Load Translations
 
@@ -23,10 +28,11 @@ We can add the translations on init by create a new file `i18n.ts` beside our `A
 [source,typescript]
 ----
 import i18n from 'i18next'
-import { resources } from 'neo4j-arc/graph-visualization'
 import { initReactI18next } from 'react-i18next'
+import { resources } from 'neo4j-arc/graph-visualization'
+import LanguageDetector from 'i18next-browser-languagedetector'
 
-i18n.use(initReactI18next).init({
+i18n.use(LanguageDetector).use(initReactI18next).init({
   resources,
   lng: 'zh',
   interpolation: {
@@ -43,6 +49,8 @@ export default i18n
 * The file does not need to be named `i18n.ts`, it can be any other filename. Just make sure it is imported accordingly.
 * Those interested in the details above can refer to the
   https://qubitpi.gitbook.io/react-i18next/guides/quick-start[react-i18next documentation]
+* The example above uses `LanguageDetector` plugin which detects user language in the broser automatically. If we have
+  decided not to install `i18next-browser-languagedetector` then we do not need to import and use `LanguageDetector`. 
 ====
 
 ==== Add after Init
@@ -53,8 +61,9 @@ We can also add the translations after init:
 ----
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
+import LanguageDetector from 'i18next-browser-languagedetector'
 
-i18n.use(initReactI18next).init({
+i18n.use(LanguageDetector).use(initReactI18next).init({
   resources: {},
   lng: 'zh',
   interpolation: {
