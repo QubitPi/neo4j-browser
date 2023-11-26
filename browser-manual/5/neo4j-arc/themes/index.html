@@ -26,6 +26,8 @@
 </script>
 <!-- End Hotjar Tracking code -->
     <title>Theming - Neo4j Browser</title>
+    <link rel="prev" href="../i18n/">
+    <link rel="next" href="../graph-modelling/">
       <meta name="description" content="This section describes how styling is implemented in neo4j-arc and how to customize it">
 <link rel="stylesheet" href="https://neo4j.com/wp-content/themes/neo4jweb/assets/neo4j-react-modules-assets/search-preact/chunkless/bundle.css" />
 <link rel="stylesheet" href="https://neo4j.com/wp-content/themes/neo4jweb/assets/neo4j-react-modules-assets/search-preact/chunkless/utilities.min.css" />
@@ -401,6 +403,9 @@ mixpanel.track("Page View", {
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../i18n/">Internationalization</a>
   </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="./">Theming</a>
+  </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../graph-modelling/">Graph Modeling</a>
   </li>
@@ -466,6 +471,9 @@ mixpanel.track("Page View", {
     <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../">Neo4j Browser</a></li>
+    <li><a href="../">
+        Neo4J Arc
+    </a></li>
     <li><a href="./">
         Theming
     </a></li>
@@ -493,6 +501,11 @@ access to the provided theme, even when they are multiple levels deep.</p>
 <div class="paragraph">
 <p>Themes are passed down to a component using the <code>theme</code> prop</p>
 </div>
+<nav class="pagination">
+  <span class="prev"><a href="../i18n/">Internationalization</a></span>
+
+  <span class="next"><a href="../graph-modelling/">Graph Modeling</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents"
   data-levels="2">
