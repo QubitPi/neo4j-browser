@@ -1,0 +1,41 @@
+:description: This section describes how styling is implemented in neo4j-arc and how to customize it
+
+[[neo4j-arc-themes]]
+= Theming
+
+neo4j-arc has full theming support via
+https://qubitpi.github.io/styled-components-website/docs/advanced#theming[styled-component] , which provides a theme to
+all neo4j-arc components underneath itself via the context API. In the render tree all styled-components will have
+access to the provided theme, even when they are multiple levels deep.
+
+Themes are passed down to a component using the `theme` prop
+
+Create a file named *themes.ts*:
+
+[source,typescript]
+----
+export const theme = {
+  frameSidebarBackground: "transparent",
+};
+----
+
+Load the themes:
+
+[source,typescript]
+----
+import { ThemeProvider } from "styled-components";
+import { theme } from "./themes";
+
+export default function MyGraphComponent(): JSX.Element {
+
+  const themeData = theme;
+
+  return (
+    <ThemeProvider theme={themeData}>
+      <GraphVisualizer
+      ...
+      />
+    </ThemeProvider>
+  );
+}
+----
