@@ -107,3 +107,22 @@ const App = (): JSX.Element => {
 }
 export default AppInit
 ----
+
+
+== Troubleshooting
+
+=== Switching Browser Lanauage Does Not Alter the Displayed Language in Neo4j Browser
+
+Please make sure the i18n is either
+
+1. set up with fixed language, for example
+
+   [source,typescript]
+   ----
+   i18n.use(initReactI18next).init({
+     ...
+     lng: 'zh'
+   })
+   ----
+
+2. or, if auto language detection is enabled, try clearing browser cookie and try again.
