@@ -46,6 +46,8 @@ export const StyledNodeInspectorContainer = styled.div<{
 export const StyledNodeInspectorTopMenuChevron = styled.button<{
   expanded: boolean
 }>`
+  border: none;
+  outline: none;
   background-color: ${props => props.theme.frameSidebarBackground};
   cursor: pointer;
   position: absolute;
