@@ -31,5 +31,6 @@
 
 * xref:neo4j-arc/index.adoc[Neo4J Arc]
 ** xref:neo4j-arc/i18n.adoc[]
+** xref:neo4j-arc/themes.adoc[]
 ** xref:neo4j-arc/graph-modelling.adoc[]
 ** xref:neo4j-arc/graph-interactions.adoc[]
