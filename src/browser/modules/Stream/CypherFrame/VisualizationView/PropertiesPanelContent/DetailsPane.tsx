@@ -58,11 +58,22 @@ export function DetailsPane({
     setMaxPropertiesCount(maxPropertiesCount + numMore)
   }
 
+  let paneTitle = ''
+  const item = vizItem.item
+  const captionPropertyKey = graphStyle
+    .pickupCaptionPropertyKey(item)
+    .replace(/[{}]/g, '')
+  for (let i = 0; i < item.propertyList.length; i++) {
+    if (item.propertyList[i].key == captionPropertyKey) {
+      paneTitle = item.propertyList[i].value
+    }
+  }
+
   return (
     <PaneWrapper>
       <PaneHeader>
-        <PaneTitle>
-          <span>{`${upperFirst(vizItem.type)} properties`}</span>
+        <PaneTitle data-testid="viz-details-pane-title">
+          <span>{`${paneTitle}`}</span>
           <ClipboardCopier
             textToCopy={allItemProperties
               .map(prop => `${prop.key}: ${prop.value}`)

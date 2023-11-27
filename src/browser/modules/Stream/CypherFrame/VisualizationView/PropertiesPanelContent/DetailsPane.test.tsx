@@ -128,4 +128,14 @@ describe('<DetailsPane />', () => {
       screen.getByRole('button', { name: 'Show 3 more' })
     ).toBeInTheDocument()
   })
+
+  test('should display node/rel caption as panel title', async () => {
+    renderComponent({
+      propertyList: [{ key: 'name', value: 'New Node', type: 'string' }]
+    })
+
+    expect(screen.getByTestId('viz-details-pane-title').textContent).toEqual(
+      'New Node'
+    )
+  })
 })

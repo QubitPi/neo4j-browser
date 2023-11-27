@@ -36,7 +36,7 @@ If you select a relationship type in the _Overview_, there are several styling o
 [caption="Label and type overview"]
 image:browser-style3.png[]
 
-If you select a node in the _graph result frame_, the _Node Properties_ shows labels and properties; selecting a node label works the same as in the _Overview_.
+If you select a node in the _graph result frame_, the _Node Inspector Panel_ toggles up on the right and shows labels and properties; selecting a node label works the same as in the _Overview_.
 
 .Styling for selected node labels
 =====

@@ -280,18 +280,7 @@ export class GraphStyleModel {
     return DEFAULT_COLORS[index]
   }
 
-  getDefaultNodeCaption = function (
-    item: any
-  ): { caption: string } | { defaultCaption: string } {
-    if (
-      !item ||
-      // @ts-expect-error ts-migrate(2365) FIXME: Operator '>' cannot be applied to types 'boolean' ... Remove this comment to see the full error message
-      !(item.propertyList != null ? item.propertyList.length : 0) > 0
-    ) {
-      return {
-        defaultCaption: '<id>'
-      }
-    }
+  pickupCaptionPropertyKey = (item: any): string => {
     const captionPrioOrder = [
       /^name$/i,
       /^title$/i,
@@ -300,7 +289,8 @@ export class GraphStyleModel {
       /description$/i,
       /^.+/
     ]
-    let defaultCaption = captionPrioOrder.reduceRight((leading, current) => {
+
+    return captionPrioOrder.reduceRight((leading, current) => {
       const hits = item.propertyList.filter((prop: any) =>
         current.test(prop.key)
       )
@@ -310,6 +300,23 @@ export class GraphStyleModel {
         return leading
       }
     }, '')
+  }
+
+  getDefaultNodeCaption = (
+    item: any
+  ): { caption: string } | { defaultCaption: string } => {
+    if (
+      !item ||
+      // @ts-expect-error ts-migrate(2365) FIXME: Operator '>' cannot be applied to types 'boolean' ... Remove this comment to see the full error message
+      !(item.propertyList != null ? item.propertyList.length : 0) > 0
+    ) {
+      return {
+        defaultCaption: '<id>'
+      }
+    }
+
+    let defaultCaption = this.pickupCaptionPropertyKey(item)
+
     defaultCaption || (defaultCaption = '<id>')
     return {
       caption: defaultCaption
