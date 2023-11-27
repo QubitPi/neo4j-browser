@@ -72,7 +72,7 @@ export function DetailsPane({
   return (
     <PaneWrapper>
       <PaneHeader>
-        <PaneTitle>
+        <PaneTitle data-testid="viz-details-pane-title">
           <span>{`${paneTitle}`}</span>
           <ClipboardCopier
             textToCopy={allItemProperties
