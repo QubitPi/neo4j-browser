@@ -276,28 +276,8 @@ export class GraphEventHandlerModel {
     ) {
       this.altCreatedRelTargetNode = node
 
-      const transientId: string =
-        'transient-' + Math.random().toString(36).slice(2)
-
-      const altCreatedRel: RelationshipModel = new RelationshipModel(
-        transientId,
-        this.altCreatedRelSourceNode,
-        this.altCreatedRelTargetNode,
-        transientId,
-        { name: 'new link' },
-        { name: 'string' },
-        transientId
-      )
-
-      this.graph.addRelationships([altCreatedRel])
-      this.visualization.update({
-        updateNodes: true,
-        updateRelationships: true
-      })
-      this.graphModelChanged()
-
       this.onGraphInteraction(REL_ON_CANVAS_CREATE, {
-        type: transientId,
+        type: Math.random().toString(36).slice(2),
         sourceNodeId: this.altCreatedRelSourceNode.id,
         targetNodeId: this.altCreatedRelTargetNode.id
       })
