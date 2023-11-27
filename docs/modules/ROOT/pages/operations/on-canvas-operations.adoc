@@ -28,3 +28,8 @@ image:modifying-node-properties-example.png[width=600]
 Similary, we can modify node label:
 
 image:modifying-node-label-example.png[width=600]
+
+== Creating On-Canvas Relationships
+
+Alt-clicking one node, release the alk key, and alt-clicking another node will create a relationship between the two
+ 
