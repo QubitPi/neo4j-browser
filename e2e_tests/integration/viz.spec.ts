@@ -270,4 +270,34 @@ describe('Viz rendering', () => {
 
     cy.executeCommand('MATCH (n) DETACH DELETE n')
   })
+
+  it('can create a new relationship by alt-clicking two nodes in sequence', () => {
+    cy.executeCommand(':clear')
+    cy.executeCommand('MATCH (n) DETACH DELETE n')
+    cy.executeCommand(`CREATE (s:SourceNode {name: 'sourceNode'}) RETURN s`, {
+      parseSpecialCharSequences: false
+    })
+      .executeCommand(`CREATE (t:TargetNode {name: 'targetNode'}) RETURN t`, {
+        parseSpecialCharSequences: false
+      })
+      .executeCommand(`MATCH (n) RETURN n`, {
+        parseSpecialCharSequences: false
+      })
+
+    cy.wait(3000)
+
+    cy.get(`[aria-label^="graph-node"]`)
+      .each($el => {
+        cy.wrap($el).rightclick({
+          altKey: true,
+          metaKey: true,
+          shiftKey: true,
+          ctrlKey: true,
+          multiple: true,
+          force: true
+        })
+      })
+      .get('.relationships')
+      .should('exist')
+  })
 })
