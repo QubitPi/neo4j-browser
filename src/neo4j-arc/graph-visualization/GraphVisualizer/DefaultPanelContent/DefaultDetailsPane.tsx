@@ -70,6 +70,7 @@ export function DefaultDetailsPane({
   const item = vizItem.item
   const captionPropertyKey = graphStyle
     .pickupCaptionPropertyKey(item)
+    // strip off sorounding "{}" because pickupCaptionPropertyKey(item) returns something like "{title}"
     .replace(/[{}]/g, '')
   for (let i = 0; i < item.propertyList.length; i++) {
     if (item.propertyList[i].key == captionPropertyKey) {

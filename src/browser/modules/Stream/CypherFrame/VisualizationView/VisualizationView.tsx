@@ -32,7 +32,8 @@ import {
   NODE_ON_CANVAS_CREATE,
   NODE_PROP_UPDATE,
   NODE_LABEL_UPDATE,
-  REL_TYPE_UPDATE
+  REL_TYPE_UPDATE,
+  DETAILS_PANE_TITLE_UPDATE
 } from 'neo4j-arc/graph-visualization'
 
 import { StyledVisContainer } from './VisualizationView.styled'
@@ -424,6 +425,39 @@ LIMIT ${maxNewNeighbours}`
         {
           query,
           params: { labels, name, description },
+          queryType: NEO4J_BROWSER_USER_ACTION_QUERY
+        },
+        (response: any) => {
+          if (!response.success) {
+            throw new Error(response.error)
+          }
+        }
+      )
+
+      const cmd = 'MATCH (n) RETURN n;'
+      const action = executeCommand(cmd, { source: commandSources.rerunFrame })
+      this.props.bus.send(action.type, action)
+    }
+
+    if (event == DETAILS_PANE_TITLE_UPDATE) {
+      if (properties == null) {
+        throw new Error('DETAILS_PANE_TITLE_UPDATE: properties map is required')
+      }
+
+      const nodeOrRelId = properties['nodeOrRelId']
+      const titlePropertyKey = properties['titlePropertyKey']
+      const newTitle = properties['newTitle']
+
+      const isNode = properties['isNode']
+      const query = isNode
+        ? `MATCH (n)       WHERE ID(n) = ${nodeOrRelId} SET n.${titlePropertyKey} = '${newTitle}'`
+        : `MATCH ()-[r]-() WHERE ID(r) = ${nodeOrRelId} SET n.${titlePropertyKey} = '${newTitle}'`
+
+      this.props.bus.self(
+        CYPHER_REQUEST,
+        {
+          query,
+          params: { nodeOrRelId, titlePropertyKey, newTitle },
           queryType: NEO4J_BROWSER_USER_ACTION_QUERY
         },
         (response: any) => {

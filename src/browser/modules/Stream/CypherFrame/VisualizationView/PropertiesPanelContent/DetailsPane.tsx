@@ -26,12 +26,14 @@ import { StyleableRelType } from './StyleableRelType'
 import { PaneBody, PaneHeader, PaneTitle, PaneWrapper } from './styled'
 import { DetailsPaneProps } from 'neo4j-arc'
 
+import { DETAILS_PANE_TITLE_UPDATE } from 'neo4j-arc/graph-visualization'
+
 export const DETAILS_PANE_STEP_SIZE = 1000
 export function DetailsPane({
   vizItem,
   graphStyle,
   nodeInspectorWidth,
-  onGraphInteraction
+  onGraphInteraction = () => undefined
 }: DetailsPaneProps): JSX.Element {
   const [maxPropertiesCount, setMaxPropertiesCount] = useState(
     DETAILS_PANE_STEP_SIZE
@@ -62,6 +64,7 @@ export function DetailsPane({
   const item = vizItem.item
   const captionPropertyKey = graphStyle
     .pickupCaptionPropertyKey(item)
+    // strip off sorounding "{}" because pickupCaptionPropertyKey(item) returns something like "{title}"
     .replace(/[{}]/g, '')
   for (let i = 0; i < item.propertyList.length; i++) {
     if (item.propertyList[i].key == captionPropertyKey) {
@@ -73,7 +76,23 @@ export function DetailsPane({
     <PaneWrapper>
       <PaneHeader>
         <PaneTitle data-testid="viz-details-pane-title">
-          <span>{`${paneTitle}`}</span>
+          <div
+            suppressContentEditableWarning={true}
+            contentEditable="true"
+            onKeyUp={(event: any) => {
+              if (event.keyCode === 13) {
+                event.preventDefault()
+                onGraphInteraction(DETAILS_PANE_TITLE_UPDATE, {
+                  isNode: vizItem.type === 'node',
+                  nodeOrRelId: vizItem.item.id,
+                  titlePropertyKey: captionPropertyKey,
+                  newTitle: event.currentTarget.textContent
+                })
+              }
+            }}
+          >
+            <span>{`${paneTitle}`}</span>
+          </div>
           <ClipboardCopier
             textToCopy={allItemProperties
               .map(prop => `${prop.key}: ${prop.value}`)
