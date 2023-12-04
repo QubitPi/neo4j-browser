@@ -35,6 +35,7 @@ export const NODE_PROP_UPDATE = 'NODE_PROP_UPDATE'
 export const NODE_LABEL_UPDATE = 'NODE_LABEL_UPDATE'
 export const REL_ON_CANVAS_CREATE = 'REL_ON_CANVAS_CREATE'
 export const REL_TYPE_UPDATE = 'REL_TYPE_UPDATE'
+export const DETAILS_PANE_TITLE_UPDATE = 'DETAILS_PANE_TITLE_UPDATE'
 
 export type GraphInteraction =
   | 'NODE_EXPAND'
@@ -45,6 +46,7 @@ export type GraphInteraction =
   | typeof NODE_LABEL_UPDATE
   | typeof REL_ON_CANVAS_CREATE
   | typeof REL_TYPE_UPDATE
+  | typeof DETAILS_PANE_TITLE_UPDATE
 
 export type GraphInteractionCallBack = (
   event: GraphInteraction,

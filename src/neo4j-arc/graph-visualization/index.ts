@@ -40,7 +40,8 @@ export {
   NODE_ON_CANVAS_CREATE,
   NODE_PROP_UPDATE,
   NODE_LABEL_UPDATE,
-  REL_TYPE_UPDATE
+  REL_TYPE_UPDATE,
+  DETAILS_PANE_TITLE_UPDATE
 } from './GraphVisualizer/Graph/GraphEventHandlerModel'
 export type { GraphInteractionCallBack } from './GraphVisualizer/Graph/GraphEventHandlerModel'
 

@@ -26,6 +26,10 @@ describe('Node Inspection Panel rendering', () => {
     cy.ensureConnection()
   })
 
+  afterEach(() => {
+    cy.executeCommand('MATCH (n) DETACH DELETE n')
+  })
+
   it('should display node/rel caption as panel title', () => {
     cy.executeCommand(':clear')
     cy.executeCommand(`CREATE (s:SourceNode {name: 'My Node'}) RETURN s`, {
@@ -37,5 +41,29 @@ describe('Node Inspection Panel rendering', () => {
       .trigger('mouseenter', { force: true })
       .get('[data-testid="viz-details-pane-title"]')
       .contains('My Node')
+  })
+
+  it('details pane title should be editable', () => {
+    cy.executeCommand(':clear')
+    cy.executeCommand(`CREATE (s:SourceNode {name: 'My Node'}) RETURN s`, {
+      parseSpecialCharSequences: false
+    })
+
+    cy.get(`[aria-label^="graph-node"]`)
+      .trigger('mouseover', { force: true })
+      .trigger('mouseenter', { force: true })
+      .get('[data-testid="viz-details-pane-title"]')
+      .find('[contenteditable]')
+      .clear()
+      .type('New Title{enter}', { force: true })
+
+    cy.wait(1500)
+
+    cy.get(`[aria-label^="graph-node"]`)
+      .first()
+      .trigger('mouseover', { force: true })
+      .trigger('mouseenter', { force: true })
+      .get('[data-testid="viz-details-pane-title"]')
+      .contains('New Title')
   })
 })
