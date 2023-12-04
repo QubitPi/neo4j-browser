@@ -26,7 +26,10 @@ import { PaneBody, PaneHeader, PaneTitle, PaneWrapper } from './styled'
 import { NodeLabel } from './NodeLabel'
 import { RelType } from './RelType'
 import { GraphStyleModel } from '../../models/GraphStyle'
-import { GraphInteractionCallBack } from '../Graph/GraphEventHandlerModel'
+import {
+  DETAILS_PANE_TITLE_UPDATE,
+  GraphInteractionCallBack
+} from '../Graph/GraphEventHandlerModel'
 
 export const DETAILS_PANE_STEP_SIZE = 1000
 export type DetailsPaneProps = {
@@ -39,7 +42,7 @@ export function DefaultDetailsPane({
   vizItem,
   graphStyle,
   nodeInspectorWidth,
-  onGraphInteraction
+  onGraphInteraction = () => undefined
 }: DetailsPaneProps): JSX.Element {
   const [maxPropertiesCount, setMaxPropertiesCount] = useState(
     DETAILS_PANE_STEP_SIZE
@@ -82,7 +85,23 @@ export function DefaultDetailsPane({
     <PaneWrapper>
       <PaneHeader>
         <PaneTitle data-testid="viz-details-pane-title">
-          <span>{`${paneTitle}`}</span>
+          <div
+            suppressContentEditableWarning={true}
+            contentEditable="true"
+            onKeyUp={(event: any) => {
+              if (event.keyCode === 13) {
+                event.preventDefault()
+                onGraphInteraction(DETAILS_PANE_TITLE_UPDATE, {
+                  isNode: vizItem.type === 'node',
+                  nodeOrRelId: vizItem.item.id,
+                  titlePropertyKey: captionPropertyKey,
+                  newTitle: event.currentTarget.textContent
+                })
+              }
+            }}
+          >
+            <span>{`${paneTitle}`}</span>
+          </div>
           <ClipboardCopier
             textToCopy={allItemProperties
               .map(prop => `${prop.key}: ${prop.value}`)
