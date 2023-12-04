@@ -449,9 +449,10 @@ LIMIT ${maxNewNeighbours}`
       const newTitle = properties['newTitle']
 
       const isNode = properties['isNode']
-      const query = isNode
-        ? `MATCH (n)       WHERE ID(n) = ${nodeOrRelId} SET n.${titlePropertyKey} = '${newTitle}'`
-        : `MATCH ()-[r]-() WHERE ID(r) = ${nodeOrRelId} SET n.${titlePropertyKey} = '${newTitle}'`
+      const query =
+        isNode == 'true'
+          ? `MATCH (n)       WHERE ID(n) = ${nodeOrRelId} SET n.${titlePropertyKey} = '${newTitle}'`
+          : `MATCH ()-[r]-() WHERE ID(r) = ${nodeOrRelId} SET r.${titlePropertyKey} = '${newTitle}'`
 
       this.props.bus.self(
         CYPHER_REQUEST,
