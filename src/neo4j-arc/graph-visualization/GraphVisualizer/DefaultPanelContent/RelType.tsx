@@ -50,14 +50,17 @@ export function RelType({
     <div
       suppressContentEditableWarning={true}
       contentEditable="true"
-      onInput={e =>
-        onGraphInteraction(REL_TYPE_UPDATE, {
-          sourceNodeId: sourceNodeId,
-          targetNodeId: targetNodeId,
-          oldType: selectedRelType.relType,
-          newType: e.currentTarget.textContent
-        })
-      }
+      onKeyUp={(event: any) => {
+        if (event.keyCode === 13) {
+          event.preventDefault()
+          onGraphInteraction(REL_TYPE_UPDATE, {
+            sourceNodeId: sourceNodeId,
+            targetNodeId: targetNodeId,
+            oldType: selectedRelType.relType,
+            newType: event.currentTarget.textContent
+          })
+        }
+      }}
     >
       <NonClickableRelTypeChip
         style={{
