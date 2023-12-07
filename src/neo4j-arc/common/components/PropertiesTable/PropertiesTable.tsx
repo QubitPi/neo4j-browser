@@ -73,13 +73,16 @@ function ExpandableValue({
     <div
       suppressContentEditableWarning={true}
       contentEditable="true"
-      onInput={e =>
-        onGraphInteraction(NODE_PROP_UPDATE, {
-          nodeId: nodeId,
-          propKey: propKey,
-          propVal: e.currentTarget.textContent
-        })
-      }
+      onKeyUp={(event: any) => {
+        if (event.keyCode === 13) {
+          event.preventDefault()
+          onGraphInteraction(NODE_PROP_UPDATE, {
+            nodeId: nodeId,
+            propKey: propKey,
+            propVal: event.currentTarget.textContent
+          })
+        }
+      }}
     >
       {type.startsWith('Array') && '['}
       <ClickableUrls text={valueShown} />
