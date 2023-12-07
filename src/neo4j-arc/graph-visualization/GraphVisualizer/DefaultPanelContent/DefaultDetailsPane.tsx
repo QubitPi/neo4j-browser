@@ -138,6 +138,7 @@ export function DefaultDetailsPane({
       </PaneHeader>
       <PaneBody>
         <PropertiesTable
+          isNode={vizItem.type === 'node'}
           visibleProperties={visibleItemProperties}
           onMoreClick={handleMorePropertiesClick}
           moreStep={DETAILS_PANE_STEP_SIZE}

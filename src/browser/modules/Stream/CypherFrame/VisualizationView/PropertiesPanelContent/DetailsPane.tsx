@@ -131,6 +131,7 @@ export function DetailsPane({
       </PaneHeader>
       <PaneBody data-testid="viz-details-pane-body">
         <PropertiesTable
+          isNode={vizItem.type === 'node'}
           visibleProperties={visibleItemProperties}
           onMoreClick={handleMorePropertiesClick}
           moreStep={DETAILS_PANE_STEP_SIZE}

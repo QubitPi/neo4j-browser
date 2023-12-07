@@ -33,23 +33,27 @@ import { ShowMoreOrAll } from '../ShowMoreOrAll/ShowMoreOrAll'
 import { VizItemProperty } from 'neo4j-arc/common'
 import {
   GraphInteractionCallBack,
-  NODE_PROP_UPDATE
+  PROP_UPDATE
 } from '../../../graph-visualization'
 
 export const ELLIPSIS = '\u2026'
 export const WIDE_VIEW_THRESHOLD = 900
 export const MAX_LENGTH_NARROW = 150
 export const MAX_LENGTH_WIDE = 300
+
 type ExpandableValueProps = {
-  nodeId: string
+  isNode: boolean
+  nodeOrRelId: string
   propKey: string
   value: string
   width: number
   type: string
   onGraphInteraction: GraphInteractionCallBack
 }
+
 function ExpandableValue({
-  nodeId,
+  isNode,
+  nodeOrRelId,
   propKey,
   value,
   width,
@@ -76,8 +80,9 @@ function ExpandableValue({
       onKeyUp={(event: any) => {
         if (event.keyCode === 13) {
           event.preventDefault()
-          onGraphInteraction(NODE_PROP_UPDATE, {
-            nodeId: nodeId,
+          onGraphInteraction(PROP_UPDATE, {
+            isNode: isNode,
+            nodeOrRelId: nodeOrRelId,
             propKey: propKey,
             propVal: event.currentTarget.textContent
           })
@@ -97,6 +102,7 @@ function ExpandableValue({
 }
 
 type PropertiesViewProps = {
+  isNode: boolean
   visibleProperties: VizItemProperty[]
   onMoreClick: (numMore: number) => void
   totalNumItems: number
@@ -104,7 +110,9 @@ type PropertiesViewProps = {
   nodeInspectorWidth: number
   onGraphInteraction?: GraphInteractionCallBack
 }
+
 export const PropertiesTable = ({
+  isNode,
   visibleProperties,
   totalNumItems,
   onMoreClick,
@@ -131,7 +139,8 @@ export const PropertiesTable = ({
                 </KeyCell>
                 <ValueCell>
                   <ExpandableValue
-                    nodeId={id}
+                    isNode={isNode}
+                    nodeOrRelId={id}
                     propKey={key}
                     value={value}
                     width={nodeInspectorWidth}
