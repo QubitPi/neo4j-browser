@@ -499,20 +499,70 @@ mixpanel.track("Page View", {
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Creating node by double-clicking canvas
-2.</p>
-<div class="literalblock">
-<div class="content">
-<pre>| typeof NODE_ON_CANVAS_CREATE
-| typeof NODE_LABEL_UPDATE
-| typeof REL_ON_CANVAS_CREATE
-| typeof REL_TYPE_UPDATE
-| typeof PROP_UPDATE
-| typeof DETAILS_PANE_TITLE_UPDATE</pre>
-</div>
-</div>
+<p>Creating Node by Double-Clicking Canvas</p>
+</li>
+<li>
+<p>Modifying node labels by double-clicking them in Node Inspector Panel</p>
+</li>
+<li>
+<p>Creating relationship between two arbitrary nodes by alt-clicking them in sequence</p>
+</li>
+<li>
+<p>Modifying node/relationship properties in properties table</p>
+</li>
+<li>
+<p>Modifying details pane title</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>The design of interaction API is that the API defines the the data that is messaged out from Neo4j Arc library and let
+library client to decide how to use those data. This is a very powerful approach because we can choose how to persist
+those interactions. For example, when user creates a new node on canvase, we can choose to store this new node into a
+dedicated database or send it to some downstream API. Here is a diagram that illustrates this idea:</p>
+</div>
+<div class="paragraph">
+<p>The basic setup is the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { GraphInteractionCallBack } from "neo4j-devtools-arc";
+export default function MyGraphComponent(): JSX.Element {
+
+  const onGraphInteraction: GraphInteractionCallBack = (event, properties) =&gt; {
+    if (event == NODE_ON_CANVAS_CREATE) {
+      ...
+    }
+
+    if (event == NODE_LABEL_UPDATE) {
+      ...
+    }
+
+    if (event == REL_ON_CANVAS_CREATE) {
+      ...
+    }
+
+    if (event == REL_TYPE_UPDATE) {
+      ...
+    }
+
+    if (event == NODE_PROP_UPDATE) {
+      ...
+    }
+
+    if (event == DETAILS_PANE_TITLE_UPDATE) {
+      ...
+    }
+  };
+
+  return (
+    &lt;GraphVisualizer
+      ...
+      onGraphInteraction={onGraphInteraction}
+    /&gt;
+  );
+}</code></pre>
+</div>
 </div>
 </div>
 </div>
