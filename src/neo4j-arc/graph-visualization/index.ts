@@ -38,7 +38,7 @@ export type { OverviewPaneProps } from './GraphVisualizer/DefaultPanelContent/De
 export {
   REL_ON_CANVAS_CREATE,
   NODE_ON_CANVAS_CREATE,
-  NODE_PROP_UPDATE,
+  PROP_UPDATE,
   NODE_LABEL_UPDATE,
   REL_TYPE_UPDATE,
   DETAILS_PANE_TITLE_UPDATE
