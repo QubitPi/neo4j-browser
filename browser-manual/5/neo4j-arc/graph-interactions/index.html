@@ -499,19 +499,22 @@ mixpanel.track("Page View", {
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Creating Node by Double-Clicking Canvas</p>
+<p>Creating Node by Double-Clicking Canvas (<code>NODE_ON_CANVAS_CREATE</code>)</p>
 </li>
 <li>
-<p>Modifying node labels by double-clicking them in Node Inspector Panel</p>
+<p>Modifying node labels by double-clicking them in Node Inspector Panel (<code>NODE_LABEL_UPDATE</code>)</p>
 </li>
 <li>
-<p>Creating relationship between two arbitrary nodes by alt-clicking them in sequence</p>
+<p>Creating relationship between two arbitrary nodes by alt-clicking them in sequence (<code>REL_ON_CANVAS_CREATE</code>)</p>
 </li>
 <li>
-<p>Modifying node/relationship properties in properties table</p>
+<p>Modifying relatioship type from properties table (<code>REL_TYPE_UPDATE</code>)</p>
 </li>
 <li>
-<p>Modifying details pane title</p>
+<p>Modifying node/relationship properties in properties table (<code>PROP_UPDATE</code>)</p>
+</li>
+<li>
+<p>Modifying details pane title (<code>DETAILS_PANE_TITLE_UPDATE</code>)</p>
 </li>
 </ol>
 </div>
@@ -531,27 +534,61 @@ export default function MyGraphComponent(): JSX.Element {
 
   const onGraphInteraction: GraphInteractionCallBack = (event, properties) =&gt; {
     if (event == NODE_ON_CANVAS_CREATE) {
-      ...
+      const name = properties['name']
+      const description = properties['description']
+      const labels = properties['labels']
+
+      // custom logics
+      // ...
     }
 
     if (event == NODE_LABEL_UPDATE) {
-      ...
+      const nodeId = properties['nodeId']
+      const oldLabel = properties['oldLabel']
+      const newLabel = properties['newLabel']
+
+      // custom logics
+      // ...
     }
 
     if (event == REL_ON_CANVAS_CREATE) {
-      ...
+      const sourceNodeId = properties['sourceNodeId']
+      const targetNodeId = properties['targetNodeId']
+      const type = properties['type']
+
+      // custom logics
+      // ...
     }
 
     if (event == REL_TYPE_UPDATE) {
-      ...
+      const relId = properties["relId"]
+      const sourceNodeId = properties['sourceNodeId']
+      const targetNodeId = properties['targetNodeId']
+      const oldType = properties['oldType']
+      const newType = properties['newType']
+
+      // custom logics
+      // ...
     }
 
-    if (event == NODE_PROP_UPDATE) {
-      ...
+    if (event == PROP_UPDATE) {
+      const isNode = properties['isNode']
+      const nodeOrRelId = properties['nodeOrRelId']
+      const propKey = properties['propKey']
+      const propVal = properties['propVal']
+
+      // custom logics
+      // ...
     }
 
     if (event == DETAILS_PANE_TITLE_UPDATE) {
-      ...
+      const isNode = properties["isNode"]
+      const nodeOrRelId = properties['nodeOrRelId']
+      const titlePropertyKey = properties['titlePropertyKey']
+      const newTitle = properties['newTitle']
+
+      // custom logics
+      // ...
     }
   };
 
