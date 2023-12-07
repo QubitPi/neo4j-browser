@@ -59,13 +59,16 @@ export function StyleableNodeLabel({
     <div
       suppressContentEditableWarning={true}
       contentEditable="true"
-      onInput={e =>
-        onGraphInteraction(NODE_LABEL_UPDATE, {
-          nodeId: nodeId,
-          oldLabel: labels[0],
-          newLabel: e.currentTarget.textContent
-        })
-      }
+      onKeyUp={(event: any) => {
+        if (event.keyCode === 13) {
+          event.preventDefault()
+          onGraphInteraction(NODE_LABEL_UPDATE, {
+            nodeId: nodeId,
+            oldLabel: labels[0],
+            newLabel: event.currentTarget.textContent
+          })
+        }
+      }}
     >
       <Popup
         on="click"
