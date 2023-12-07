@@ -33,6 +33,7 @@ export type StyleableRelTypeProps = {
   graphStyle: GraphStyleModel
   selectedRelType: { relType: string; propertyKeys: string[]; count?: number }
   onGraphInteraction?: GraphInteractionCallBack
+  relId?: string
   sourceNodeId?: string
   targetNodeId?: string
 }
@@ -40,6 +41,7 @@ export function StyleableRelType({
   selectedRelType,
   graphStyle,
   onGraphInteraction = () => undefined,
+  relId,
   sourceNodeId,
   targetNodeId
 }: StyleableRelTypeProps): JSX.Element {
@@ -52,6 +54,7 @@ export function StyleableRelType({
       contentEditable="true"
       onInput={e =>
         onGraphInteraction(REL_TYPE_UPDATE, {
+          relId: relId,
           sourceNodeId: sourceNodeId,
           targetNodeId: targetNodeId,
           oldType: selectedRelType.relType,
