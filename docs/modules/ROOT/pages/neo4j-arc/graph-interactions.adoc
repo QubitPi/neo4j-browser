@@ -1,7 +1,99 @@
 :description: How graph interations take effect on displayed graph and backing database
 
 [[user-interactions]]
-= How Graph Interations Take Effect on Displayed Graph and Backing Database
+= Interaction API
+
+There are 6 types of interactions supported
+
+1. Creating Node by Double-Clicking Canvas (`NODE_ON_CANVAS_CREATE`)
+2. Modifying node labels by double-clicking them in Node Inspector Panel (`NODE_LABEL_UPDATE`)
+3. Creating relationship between two arbitrary nodes by alt-clicking them in sequence (`REL_ON_CANVAS_CREATE`)
+4. Modifying relatioship type from properties table (`REL_TYPE_UPDATE`)
+4. Modifying node/relationship properties in properties table (`PROP_UPDATE`)
+5. Modifying details pane title (`DETAILS_PANE_TITLE_UPDATE`)
+
+The design of interaction API is that the API defines the the data that is messaged out from Neo4j Arc library and let
+library client to decide how to use those data. This is a very powerful approach because we can choose how to persist
+those interactions. For example, when user creates a new node on canvase, we can choose to store this new node into a
+dedicated database or send it to some downstream API.
+
+The basic setup is the following:
+
+[source,typescript]
+----
+import { GraphInteractionCallBack } from "neo4j-devtools-arc";
+export default function MyGraphComponent(): JSX.Element {
+
+  const onGraphInteraction: GraphInteractionCallBack = (event, properties) => {
+    if (event == NODE_ON_CANVAS_CREATE) {
+      const name = properties['name']
+      const description = properties['description']
+      const labels = properties['labels']
+
+      // custom logics
+      // ...
+    }
+
+    if (event == NODE_LABEL_UPDATE) {
+      const nodeId = properties['nodeId']
+      const oldLabel = properties['oldLabel']
+      const newLabel = properties['newLabel']
+
+      // custom logics
+      // ...
+    }
+
+    if (event == REL_ON_CANVAS_CREATE) {
+      const sourceNodeId = properties['sourceNodeId']
+      const targetNodeId = properties['targetNodeId']
+      const type = properties['type']
+
+      // custom logics
+      // ...
+    }
+
+    if (event == REL_TYPE_UPDATE) {
+      const relId = properties["relId"]
+      const sourceNodeId = properties['sourceNodeId']
+      const targetNodeId = properties['targetNodeId']
+      const oldType = properties['oldType']
+      const newType = properties['newType']
+
+      // custom logics
+      // ...
+    }
+
+    if (event == PROP_UPDATE) {
+      const isNode = properties['isNode']
+      const nodeOrRelId = properties['nodeOrRelId']
+      const propKey = properties['propKey']
+      const propVal = properties['propVal']
+
+      // custom logics
+      // ...
+    }
+
+    if (event == DETAILS_PANE_TITLE_UPDATE) {
+      const isNode = properties["isNode"]
+      const nodeOrRelId = properties['nodeOrRelId']
+      const titlePropertyKey = properties['titlePropertyKey']
+      const newTitle = properties['newTitle']
+
+      // custom logics
+      // ...
+    }
+  };
+
+  return (
+    <GraphVisualizer
+      ...
+      onGraphInteraction={onGraphInteraction}
+    />
+  );
+}
+----
+
+== How Graph Interations Take Effect on Displayed Graph and Backing Database
 
 We define *graph interactions* as any https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent[mouse] or
 https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent[keyboard] events on the
@@ -25,7 +117,7 @@ the database connection, query issuing, and response handling, etc.
 
 ====
 
-== How to Implement a User Interaction
+=== How to Implement a User Interaction
 
 1. Implement an event handler function in GraphEventHandlerModel
 2. Bind the handler function in `GraphEventHandlerModel.bindEventHandlers()`
