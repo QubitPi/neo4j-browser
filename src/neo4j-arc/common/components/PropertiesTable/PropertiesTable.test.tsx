@@ -72,6 +72,7 @@ describe('<DetailsPane />', () => {
     }
     return render(
       <PropertiesTable
+        isNode={type === 'node'}
         visibleProperties={propertyList}
         onMoreClick={jest.fn()}
         totalNumItems={propertyList.length}

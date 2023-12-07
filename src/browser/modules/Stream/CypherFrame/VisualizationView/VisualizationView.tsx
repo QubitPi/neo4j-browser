@@ -30,7 +30,7 @@ import {
   GraphVisualizer,
   REL_ON_CANVAS_CREATE,
   NODE_ON_CANVAS_CREATE,
-  NODE_PROP_UPDATE,
+  PROP_UPDATE,
   NODE_LABEL_UPDATE,
   REL_TYPE_UPDATE,
   DETAILS_PANE_TITLE_UPDATE
@@ -315,6 +315,10 @@ LIMIT ${maxNewNeighbours}`
           }
         }
       )
+
+      const cmd = 'MATCH (n) RETURN n;'
+      const action = executeCommand(cmd, { source: commandSources.rerunFrame })
+      this.props.bus.send(action.type, action)
     }
 
     if (event == NODE_LABEL_UPDATE) {
@@ -343,27 +347,33 @@ LIMIT ${maxNewNeighbours}`
           }
         }
       )
+
+      const cmd = 'MATCH (n) RETURN n;'
+      const action = executeCommand(cmd, { source: commandSources.rerunFrame })
+      this.props.bus.send(action.type, action)
     }
 
-    if (event == NODE_PROP_UPDATE) {
+    if (event == PROP_UPDATE) {
       if (properties == null) {
         throw new Error(
           'A property map with nodeId, propKey, and propVal keys are required'
         )
       }
 
-      const nodeId = properties['nodeId']
+      const isNode = properties['isNode']
+      const nodeOrRelId = properties['nodeOrRelId']
       const propKey = properties['propKey']
       const propVal = properties['propVal']
 
-      const query = `MATCH (n) WHERE ID(n) = ${nodeId} SET n.${propKey} = "${propVal}"`
-      console.log(query)
+      const query = isNode
+        ? `MATCH (n)       WHERE ID(n) = ${nodeOrRelId} SET n.${propKey} = "${propVal}"`
+        : `MATCH ()-[r]-() WHERE ID(r) = ${nodeOrRelId} SET r.${propKey} = "${propVal}"`
 
       this.props.bus.self(
         CYPHER_REQUEST,
         {
           query,
-          params: { nodeId, propKey, propVal },
+          params: { nodeOrRelId, propKey, propVal },
           queryType: NEO4J_BROWSER_USER_ACTION_QUERY
         },
         (response: any) => {
@@ -372,6 +382,10 @@ LIMIT ${maxNewNeighbours}`
           }
         }
       )
+
+      const cmd = 'MATCH (n) RETURN n;'
+      const action = executeCommand(cmd, { source: commandSources.rerunFrame })
+      this.props.bus.send(action.type, action)
     }
 
     if (event == REL_ON_CANVAS_CREATE) {
