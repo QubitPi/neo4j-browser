@@ -50,17 +50,26 @@ export function StyleableRelType({
   })
   return (
     <div
+      data-testid="styleable-rel-type"
       suppressContentEditableWarning={true}
       contentEditable="true"
-      onInput={e =>
-        onGraphInteraction(REL_TYPE_UPDATE, {
-          relId: relId,
-          sourceNodeId: sourceNodeId,
-          targetNodeId: targetNodeId,
-          oldType: selectedRelType.relType,
-          newType: e.currentTarget.textContent
-        })
-      }
+      onKeyDown={(event: any) => {
+        if (event.key == 'Enter') {
+          event.preventDefault() // prevent new line char on Enter (https://stackoverflow.com/a/60008550)
+        }
+      }}
+      onKeyUp={(event: any) => {
+        if (event.keyCode === 13) {
+          event.preventDefault()
+          onGraphInteraction(REL_TYPE_UPDATE, {
+            relId: relId,
+            sourceNodeId: sourceNodeId,
+            targetNodeId: targetNodeId,
+            oldType: selectedRelType.relType,
+            newType: event.currentTarget.textContent
+          })
+        }
+      }}
     >
       <Popup
         on="click"

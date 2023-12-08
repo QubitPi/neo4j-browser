@@ -57,6 +57,7 @@ export function StyleableNodeLabel({
 
   return (
     <div
+      data-testid="styleable-node-label"
       suppressContentEditableWarning={true}
       contentEditable="true"
       onKeyDown={(event: any) => {

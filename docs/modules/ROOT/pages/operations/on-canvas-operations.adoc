@@ -33,3 +33,11 @@ image:modifying-node-label-example.png[width=600]
 
 Alt-clicking one node, release the alk key, and alt-clicking another node will create a relationship between the two
  
+== Editing the Relationshiop Type and Properties in Node Inspection Panel
+
+[NOTE]
+====
+Make sure APOC plugin is enabled in Neo4J database:
+
+image:enable-apoc.png[width=600]
+====
