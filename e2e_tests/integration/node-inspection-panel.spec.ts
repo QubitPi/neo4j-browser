@@ -99,8 +99,7 @@ describe('Node Inspection Panel rendering', () => {
     )
       .wait(3000)
       .get('.relationship', { timeout: 5000 })
-      .click(5, 40)
-      // .trigger('click', { force: true }) clicking on the rel center this way won't work
+      .trigger('click', { force: true })
       .get('[data-testid="styleable-rel-type"]', { timeout: 5000 })
       .first()
       .clear()
