@@ -306,7 +306,7 @@ LIMIT ${maxNewNeighbours}`
         CYPHER_REQUEST,
         {
           query,
-          params: { sourceNodeId, targetNodeId, oldType, newType },
+          params: { type, sourceNodeId, targetNodeId, newType },
           queryType: NEO4J_BROWSER_USER_ACTION_QUERY
         },
         (response: any) => {

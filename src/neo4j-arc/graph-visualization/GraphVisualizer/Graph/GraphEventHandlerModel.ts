@@ -42,8 +42,8 @@ export type GraphInteraction =
   | 'NODE_UNPINNED'
   | 'NODE_DISMISSED'
   | typeof NODE_ON_CANVAS_CREATE
-  | typeof NODE_LABEL_UPDATE
   | typeof REL_ON_CANVAS_CREATE
+  | typeof NODE_LABEL_UPDATE
   | typeof REL_TYPE_UPDATE
   | typeof PROP_UPDATE
   | typeof DETAILS_PANE_TITLE_UPDATE

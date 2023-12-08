@@ -75,6 +75,7 @@ function ExpandableValue({
 
   return (
     <div
+      data-testid={`properties-table-${propKey}-value-cell`}
       suppressContentEditableWarning={true}
       contentEditable="true"
       onKeyDown={(event: any) => {
