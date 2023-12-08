@@ -123,6 +123,7 @@ export function DefaultDetailsPane({
             }}
             graphStyle={graphStyle}
             onGraphInteraction={onGraphInteraction}
+            relId={vizItem.item.id}
             sourceNodeId={vizItem.item.source.id}
             targetNodeId={vizItem.item.target.id}
           />

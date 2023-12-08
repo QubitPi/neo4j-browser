@@ -30,6 +30,7 @@ export type RelTypeProps = {
   graphStyle: GraphStyleModel
   selectedRelType: { relType: string; propertyKeys: string[]; count?: number }
   onGraphInteraction?: GraphInteractionCallBack
+  relId?: string
   sourceNodeId?: string
   targetNodeId?: string
 }
@@ -40,6 +41,7 @@ export function RelType({
   selectedRelType,
   graphStyle,
   onGraphInteraction = () => undefined,
+  relId,
   sourceNodeId,
   targetNodeId
 }: RelTypeProps): JSX.Element {
@@ -59,6 +61,7 @@ export function RelType({
         if (event.keyCode === 13) {
           event.preventDefault()
           onGraphInteraction(REL_TYPE_UPDATE, {
+            relId: relId,
             sourceNodeId: sourceNodeId,
             targetNodeId: targetNodeId,
             oldType: selectedRelType.relType,

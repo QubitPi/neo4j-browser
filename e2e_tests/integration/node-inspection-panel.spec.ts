@@ -43,7 +43,7 @@ describe('Node Inspection Panel rendering', () => {
       .contains('My Node')
   })
 
-  it('details pane title should be editable', () => {
+  it('details pane title should be editable and pressing enter does not insert a line break at the end of new title', () => {
     cy.executeCommand(':clear')
     cy.executeCommand(`CREATE (s:SourceNode {name: 'My Node'}) RETURN s`, {
       parseSpecialCharSequences: false
@@ -65,5 +65,74 @@ describe('Node Inspection Panel rendering', () => {
       .trigger('mouseenter', { force: true })
       .get('[data-testid="viz-details-pane-title"]')
       .contains('New Title')
+      .should(title => {
+        expect(title.text()).to.equal('New Title')
+      })
+  })
+
+  it('can directly modify node label in node inspector panel and pressing enter does not insert a line break at the end of new label', () => {
+    cy.executeCommand(':clear')
+    cy.executeCommand(`CREATE (a:TestLabel {name: 'testNode'}) RETURN a`, {
+      parseSpecialCharSequences: false
+    })
+
+    cy.get(`[aria-label^="graph-node"]`)
+      .first()
+      .trigger('mouseover', { force: true })
+      .trigger('mouseenter', { force: true })
+      .trigger('click', { force: true })
+      .get('[data-testid="styleable-node-label"]', { timeout: 5000 })
+      .clear()
+      .type('New Label{enter}', { force: true })
+      .wait(1500)
+      .get('[data-testid="styleable-node-label"]', { timeout: 5000 })
+      .contains('New Label')
+      .should(label => {
+        expect(label.text()).to.equal('New Label')
+      })
+  })
+
+  it('can directly modify relationship type in node inspector panel', () => {
+    cy.executeCommand(':clear')
+    cy.executeCommand(
+      'CREATE (a:TestLabel)-[:CONNECTS]->(b:TestLabel) RETURN a, b'
+    )
+      .wait(3000)
+      .get('.relationship', { timeout: 5000 })
+      .click(5, 40)
+      // .trigger('click', { force: true }) clicking on the rel center this way won't work
+      .get('[data-testid="styleable-rel-type"]', { timeout: 5000 })
+      .first()
+      .clear()
+      .type('New Link Label{enter}', { force: true })
+      .wait(1500)
+      .get('[data-testid="styleable-rel-type"]', { timeout: 5000 })
+      .contains('New Link Label')
+  })
+
+  it('can directly modify properties table value and pressing enter does not insert a line break at the end of new value', () => {
+    cy.executeCommand(':clear')
+    cy.executeCommand(`CREATE (a:TestLabel {name: 'testNode'}) RETURN a`, {
+      parseSpecialCharSequences: false
+    })
+      .wait(3000)
+      .get(`[aria-label^="graph-node"]`)
+      .first()
+      .trigger('mouseover', { force: true })
+      .trigger('mouseenter', { force: true })
+      .trigger('click', { force: true })
+      .get('[data-testid="properties-table-name-value-cell"]', {
+        timeout: 5000
+      })
+      .clear()
+      .type('New Name{enter}', { force: true })
+      .wait(1500)
+      .get('[data-testid="properties-table-name-value-cell"]', {
+        timeout: 5000
+      })
+      .contains('New Name')
+      .should(cellValue => {
+        expect(cellValue.text()).to.equal('New Name')
+      })
   })
 })
