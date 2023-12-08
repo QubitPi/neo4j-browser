@@ -59,6 +59,11 @@ export function StyleableNodeLabel({
     <div
       suppressContentEditableWarning={true}
       contentEditable="true"
+      onKeyDown={(event: any) => {
+        if (event.key == 'Enter') {
+          event.preventDefault() // prevent new line char on Enter (https://stackoverflow.com/a/60008550)
+        }
+      }}
       onKeyUp={(event: any) => {
         if (event.keyCode === 13) {
           event.preventDefault()
