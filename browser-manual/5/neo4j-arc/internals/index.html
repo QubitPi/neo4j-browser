@@ -25,10 +25,10 @@
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
 <!-- End Hotjar Tracking code -->
-    <title>Neo4j Sandbox - Neo4j Browser</title>
-    <link rel="prev" href="../web-application/">
-    <link rel="next" href="../neo4j-aura/">
-      <meta name="description" content="Neo4j Sandbox includes Neo4j Browser.">
+    <title>Neo4J Browser Internals - Neo4j Browser</title>
+    <link rel="prev" href="../themes/">
+    <link rel="next" href="../graph-modelling/">
+      <meta name="description" content="This section describes the neo4j-arc, including its architecture and components">
 <link rel="stylesheet" href="https://neo4j.com/wp-content/themes/neo4jweb/assets/neo4j-react-modules-assets/search-preact/chunkless/bundle.css" />
 <link rel="stylesheet" href="https://neo4j.com/wp-content/themes/neo4jweb/assets/neo4j-react-modules-assets/search-preact/chunkless/utilities.min.css" />
 
@@ -52,11 +52,11 @@
     <meta name="twitter:creator" content="@neo4j" />
     <meta name="twitter:site" content="@neo4j" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Neo4j Sandbox - Neo4j Browser" />
+    <meta property="og:title" content="Neo4J Browser Internals - Neo4j Browser" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image" content="https://dist.neo4j.com/wp-content/uploads/20210423062553/neo4j-social-share-21.png" />
-    <meta property="og:description" content="Neo4j Sandbox includes Neo4j Browser." />
-    <meta property="og:url" content="https://neo4j.com/docs/browser-manual/5/deployment-modes/neo4j-sandbox/" />
+    <meta property="og:description" content="This section describes the neo4j-arc, including its architecture and components" />
+    <meta property="og:url" content="https://neo4j.com/docs/browser-manual/5/neo4j-arc/internals/" />
     <link rel="shortcut icon" href="https://neo4j.com/wp-content/themes/neo4jweb/favicon.ico" />
   </head>
   <body class="article docs">
@@ -322,25 +322,25 @@ mixpanel.track("Page View", {
     <a class="nav-link" href="../../about-browser/">About Neo4j Browser</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link nav-item-toggle" href="../">Deployment modes</a>
+    <a class="nav-link nav-item-toggle" href="../../deployment-modes/">Deployment modes</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../neo4j-server/">Neo4j Server</a>
+    <a class="nav-link" href="../../deployment-modes/neo4j-server/">Neo4j Server</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../neo4j-desktop/">Neo4j Desktop</a>
+    <a class="nav-link" href="../../deployment-modes/neo4j-desktop/">Neo4j Desktop</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../web-application/">Web application</a>
-  </li>
-  <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="./">Neo4j Sandbox</a>
+    <a class="nav-link" href="../../deployment-modes/web-application/">Web application</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../neo4j-aura/">Neo4j Aura</a>
+    <a class="nav-link" href="../../deployment-modes/neo4j-sandbox/">Neo4j Sandbox</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../dedicated-web-server/">Dedicated web server</a>
+    <a class="nav-link" href="../../deployment-modes/neo4j-aura/">Neo4j Aura</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../deployment-modes/dedicated-web-server/">Dedicated web server</a>
   </li>
 </ul>
   </li>
@@ -398,22 +398,22 @@ mixpanel.track("Page View", {
     <a class="nav-link" href="../../reference-commands/">Command reference</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link nav-item-toggle" href="../../neo4j-arc/">Neo4J Arc</a>
+    <a class="nav-link nav-item-toggle" href="../">Neo4J Arc</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../neo4j-arc/i18n/">Internationalization</a>
+    <a class="nav-link" href="../i18n/">Internationalization</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../neo4j-arc/themes/">Theming</a>
+    <a class="nav-link" href="../themes/">Theming</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="./">Neo4J Browser Internals</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../neo4j-arc/internals/">Neo4J Browser Internals</a>
+    <a class="nav-link" href="../graph-modelling/">Graph Modeling</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../neo4j-arc/graph-modelling/">Graph Modeling</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../neo4j-arc/graph-interactions/">Interaction API</a>
+    <a class="nav-link" href="../graph-interactions/">Interaction API</a>
   </li>
 </ul>
   </li>
@@ -475,10 +475,10 @@ mixpanel.track("Page View", {
   <ul>
     <li><a href="../../">Neo4j Browser</a></li>
     <li><a href="../">
-        Deployment modes
+        Neo4J Arc
     </a></li>
     <li><a href="./">
-        Neo4j Sandbox
+        Neo4J Browser Internals
     </a></li>
   </ul>
 </nav>
@@ -488,27 +488,172 @@ mixpanel.track("Page View", {
   <div class="content">
 <article class="doc">
 <div class="sect-header">
-<h1 class="page">Neo4j Sandbox</h1>
+<h1 class="page">Neo4J Browser Internals</h1>
 </div>
 
 
 
 
 
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://neo4j.com/sandbox/" target="_blank" rel="noopener">Neo4j Sandbox</a> is a free, cloud-based instance of Neo4j, where you can learn about Neo4j, test your ideas, or play around with the pre-built data examples.</p>
+<p>The Neo4J Browser is logically composed of 2 parts:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The neo4j-arc, which is the current part we are discussing</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The neo4j-arc is based on D3 and implements its own layout, coloring, and link drawing. For example, the calculation
+of arrow, i.e. links, between nodes uses some
+<a href="https://github.com/QubitPi/neo4j-browser/blob/master/src/neo4j-arc/graph-visualization/utils/ArcArrow.ts">very complicated math</a>
+along with very prelimiary MDN standard basic shap specification.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>A user-interface that combines the graph rendering (supported by the graphing module), database, and user
+interaction together</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Although we see <code>&lt;id&gt;</code> property for every node or relationship in the node inspection panel of Neo4J Browser, those
+ID&#8217;s are NOT generated by neo4j-arc, but <a href="https://stackoverflow.com/a/67702695">instead by Neo4J database</a>. This pattern
+should be honored by all client using neo4j-arc library. All nodes or relationships, at the moment of being fed into
+the module for graph viauzliation, MUST all have defined ID&#8217;s.</p>
 </div>
 <div class="paragraph">
-<p>When you launch a project, it opens Neo4j Browser as a web application.
-The Neo4j Browser web application connects to your Neo4j instance that the sandbox created for you, without having to enter any connection URI.</p>
+<p><strong>neo4j-arc does NOT generate or manage node/rel ID&#8217;s</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../../_images/browser-with-sandbox.png" alt="browser with sandbox"></span></p>
+<p>Note: the displayed <code>&lt;id&gt;</code> is the value of NodeMode.id</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>We will not have any TypeDoc documentation, because the TypeScript version used in Neo4J Browser is not supprted by the
+TypeDoc</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_component_diagram_wip"><a class="anchor" href="#_component_diagram_wip"></a>Component Diagram (WIP)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><img src="../../_images/neo4j-browser.png" alt="neo4j browser" width="900"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The orange triangle labled with "On Canvas Interaction" is discussed in detail in
+<a href="neo4j-arc/graph-interactions">graph interactions</a> section</p>
+</li>
+<li>
+<p>Sentry.io is initialized in the top index.tsx</p>
+</li>
+<li>
+<p>AppInit.tsx is responsible for several initializations:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Redux</p>
+</li>
+<li>
+<p>Suber (discussed below)</p>
+</li>
+<li>
+<p>Apollo GraphQL Client</p>
+</li>
+<li>
+<p>Drag &amp; Drop Plugin</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The initialization assumes provider pattern around regular App component:</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;Provider store={store as any}&gt;
+  &lt;BusProvider bus={bus}&gt;
+    &lt;ApolloProvider client={client}&gt;
+      &lt;DndProvider backend={HTML5Backend}&gt;
+        &lt;App /&gt;
+      &lt;/DndProvider&gt;
+    &lt;/ApolloProvider&gt;
+  &lt;/BusProvider&gt;
+&lt;/Provider&gt;</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Neo4J Browser styling is implemented via <a href="https://styled-components.com/">styled-components</a> and is initialized in App.tsx</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_what_is_suber"><a class="anchor" href="#_what_is_suber"></a>What is Suber?</h3>
+<div class="paragraph">
+<p>Looking at suber-related code (<code>bus</code>), we feel that it is very similar to Redux. It&#8217;s true that both Suber and Redux are
+designed to <strong>decouple React components</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Redux decouples components via "state", which makes it great for shared application state handling. Essentially, if one
+component A depends on component B via a state S; when S is updated in B, A gets re-rendered accordingly. Redux is our
+choice in this case</p>
+</div>
+<div class="paragraph">
+<p>But what if component A depends on B via a prop that is not a state? For example, if component B is a database client
+and component A is a user registration form, then there is no concept of state S between A and B, because between A and
+B is just a one-time username/password message. Application state that is not shared should not go into Redux, it should
+go directly into the component that needs it.</p>
+</div>
+<div class="paragraph">
+<p>This is where <a href="https://github.com/oskarhane/suber">suber</a> comes in.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../_images/redux-vs-suber.png" alt="redux vs suber" width="900"></span></p>
+</div>
+</div>
+</div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../web-application/">Web application</a></span>
+  <span class="prev"><a href="../themes/">Theming</a></span>
 
-  <span class="next"><a href="../neo4j-aura/">Neo4j Aura</a></span>
+  <span class="next"><a href="../graph-modelling/">Graph Modeling</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents"
