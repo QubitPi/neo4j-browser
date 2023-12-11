@@ -33,7 +33,8 @@ export function DetailsPane({
   vizItem,
   graphStyle,
   nodeInspectorWidth,
-  onGraphInteraction = () => undefined
+  onGraphInteraction = () => undefined,
+  showPropertiesTable = true
 }: DetailsPaneProps): JSX.Element {
   const [maxPropertiesCount, setMaxPropertiesCount] = useState(
     DETAILS_PANE_STEP_SIZE
@@ -135,17 +136,19 @@ export function DetailsPane({
             )
           })}
       </PaneHeader>
-      <PaneBody data-testid="viz-details-pane-body">
-        <PropertiesTable
-          isNode={vizItem.type === 'node'}
-          visibleProperties={visibleItemProperties}
-          onMoreClick={handleMorePropertiesClick}
-          moreStep={DETAILS_PANE_STEP_SIZE}
-          totalNumItems={allItemProperties.length}
-          nodeInspectorWidth={nodeInspectorWidth}
-          onGraphInteraction={onGraphInteraction}
-        />
-      </PaneBody>
+      {showPropertiesTable && (
+        <PaneBody data-testid="viz-details-pane-body">
+          <PropertiesTable
+            isNode={vizItem.type === 'node'}
+            visibleProperties={visibleItemProperties}
+            onMoreClick={handleMorePropertiesClick}
+            moreStep={DETAILS_PANE_STEP_SIZE}
+            totalNumItems={allItemProperties.length}
+            nodeInspectorWidth={nodeInspectorWidth}
+            onGraphInteraction={onGraphInteraction}
+          />
+        </PaneBody>
+      )}
     </PaneWrapper>
   )
 }
