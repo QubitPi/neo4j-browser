@@ -57,6 +57,7 @@ type GraphVisualizerDefaultProps = {
   disableWheelZoomInfoMessage: () => void
   useGeneratedDefaultColors: boolean
   showNodeInspectorPanel: boolean
+  showPropertiesTable: boolean
 }
 type GraphVisualizerProps = GraphVisualizerDefaultProps & {
   relationships: BasicRelationship[]
@@ -120,7 +121,8 @@ export class GraphVisualizer extends Component<
     wheelZoomInfoMessageEnabled: false,
     disableWheelZoomInfoMessage: () => undefined,
     useGeneratedDefaultColors: true,
-    showNodeInspectorPanel: true
+    showNodeInspectorPanel: true,
+    showPropertiesTable: true
   }
 
   constructor(props: GraphVisualizerProps) {
@@ -309,6 +311,7 @@ export class GraphVisualizer extends Component<
             DetailsPaneOverride={this.props.DetailsPaneOverride}
             OverviewPaneOverride={this.props.OverviewPaneOverride}
             onGraphInteraction={this.props.onGraphInteraction}
+            showPropertiesTable={this.props.showPropertiesTable}
           />
         )}
       </StyledFullSizeContainer>
