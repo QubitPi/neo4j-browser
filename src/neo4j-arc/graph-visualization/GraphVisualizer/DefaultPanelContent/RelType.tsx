@@ -50,6 +50,7 @@ export function RelType({
   })
   return (
     <div
+      data-testid="rel-type"
       suppressContentEditableWarning={true}
       contentEditable="true"
       onKeyDown={(event: any) => {
