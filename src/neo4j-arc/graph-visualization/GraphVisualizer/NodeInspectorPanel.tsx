@@ -53,6 +53,7 @@ interface NodeInspectorPanelProps {
   DetailsPaneOverride?: React.FC<DetailsPaneProps>
   OverviewPaneOverride?: React.FC<OverviewPaneProps>
   onGraphInteraction?: GraphInteractionCallBack
+  showPropertiesTable?: boolean
 }
 
 export const defaultPanelWidth = (): number =>
@@ -120,6 +121,7 @@ export class NodeInspectorPanel extends Component<NodeInspectorPanelProps> {
             <PaneContainer paneWidth={width}>
               {shownEl.type === 'node' || shownEl.type === 'relationship' ? (
                 <DetailsPane
+                  showPropertiesTable={this.props.showPropertiesTable}
                   vizItem={shownEl}
                   graphStyle={graphStyle}
                   nodeInspectorWidth={width}
