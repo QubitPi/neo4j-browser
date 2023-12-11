@@ -575,7 +575,24 @@ export default function MyGraphComponent(): JSX.Element {
 <div class="sect2">
 <h3 id="_options"><a class="anchor" href="#_options"></a>Options</h3>
 <div class="sect3">
-<h4 id="_turnning_off_inspection_panel"><a class="anchor" href="#_turnning_off_inspection_panel"></a>Turnning Off Inspection Panel</h4>
+<h4 id="_turnning_off_node_inspector_panel"><a class="anchor" href="#_turnning_off_node_inspector_panel"></a>Turnning Off Node Inspector Panel</h4>
+<div class="paragraph">
+<p>neo4j-arc shows graph with an accompanying inspection panel on the right side. This panel might be not needed in at
+least 2 business scenarios:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>a simple static page that just needs to show some static and simple graph</p>
+</li>
+<li>
+<p>a MVP product has planned but would not want to add panel feature at the moment</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The inspector panel will show by default. To turn it-off:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">export default function MyGraphComponent(): JSX.Element {
@@ -584,6 +601,22 @@ export default function MyGraphComponent(): JSX.Element {
     &lt;GraphVisualizer
       ...
       showNodeInspectorPanel={false}
+    /&gt;
+  );
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_turnning_off_properties_table"><a class="anchor" href="#_turnning_off_properties_table"></a>Turnning Off Properties Table</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">export default function MyGraphComponent(): JSX.Element {
+
+  return (
+    &lt;GraphVisualizer
+      ...
+      showPropertiesTable={false}
     /&gt;
   );
 }</code></pre>
