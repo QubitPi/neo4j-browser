@@ -30,6 +30,7 @@ import {
   DETAILS_PANE_TITLE_UPDATE,
   GraphInteractionCallBack
 } from '../Graph/GraphEventHandlerModel'
+import DefaultEditor from './Editor/DefaultEditor'
 
 export const DETAILS_PANE_STEP_SIZE = 1000
 export type DetailsPaneProps = {
@@ -157,6 +158,7 @@ export function DefaultDetailsPane({
           />
         </PaneBody>
       )}
+      {vizItem.type === 'node' && <DefaultEditor />}
     </PaneWrapper>
   )
 }
