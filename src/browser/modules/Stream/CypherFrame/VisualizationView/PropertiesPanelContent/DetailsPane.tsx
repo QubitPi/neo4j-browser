@@ -26,7 +26,10 @@ import { StyleableRelType } from './StyleableRelType'
 import { PaneBody, PaneHeader, PaneTitle, PaneWrapper } from './styled'
 import { DetailsPaneProps } from 'neo4j-arc'
 
-import { DETAILS_PANE_TITLE_UPDATE } from 'neo4j-arc/graph-visualization'
+import {
+  DETAILS_PANE_TITLE_UPDATE,
+  Editor
+} from 'neo4j-arc/graph-visualization'
 
 export const DETAILS_PANE_STEP_SIZE = 1000
 export function DetailsPane({
@@ -147,6 +150,7 @@ export function DetailsPane({
             nodeInspectorWidth={nodeInspectorWidth}
             onGraphInteraction={onGraphInteraction}
           />
+          {vizItem.type === 'node' && <Editor />}
         </PaneBody>
       )}
     </PaneWrapper>

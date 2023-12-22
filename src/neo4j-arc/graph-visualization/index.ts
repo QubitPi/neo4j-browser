@@ -18,6 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import DefaultEditor from './GraphVisualizer/DefaultPanelContent/Editor/DefaultEditor'
+
 export { NodeModel } from './models/Node'
 export { GraphModel } from './models/Graph'
 export { GraphStyleModel, Selector } from './models/GraphStyle'
@@ -62,3 +64,5 @@ export const resources = {
     }
   }
 }
+
+export { default as Editor } from './GraphVisualizer/DefaultPanelContent/Editor/DefaultEditor'
