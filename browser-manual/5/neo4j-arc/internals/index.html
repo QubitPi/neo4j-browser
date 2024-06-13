@@ -686,14 +686,14 @@ go directly into the component that needs it.</p>
 <div class="paragraph">
 <p>The "sender" of Suber bus is a graphing component who wants to persists some data into Neo4j database. For example,
 when we
-<a href="./graph-interaction/index.html#_how_graph_interations_take_effect_on_displayed_graph_and_backing_database">add a new node</a>
+<a href="../graph-interaction/index.html#_how_graph_interations_take_effect_on_displayed_graph_and_backing_database">add a new node</a>
 onto canvas, the graphing component initiates a Cypher query and
 <a href="https://github.com/oskarhane/suber?tab=readme-ov-file#self">feeds it into the Suber bus</a>.</p>
 </div>
 <div class="paragraph">
 <p>We now know who the "sender" is at one end of Suber bus. Who is the receiver them? In its simplest form, our receiver
-can simply be <a href="https://qubitpi.github.io/redux-observable/">regular TypeScript class</a>. We also notice that Suber works
-with Redux. So how about having Redux as our "reciver"?</p>
+can simply be <a href="https://github.com/oskarhane/suber?tab=readme-ov-file#usage">regular TypeScript class</a>. We also notice that
+Suber works with Redux. So how about having Redux as our "reciver"?</p>
 </div>
 <div class="paragraph">
 <p>If we do that, we will need to wire up some logic that sends the Cypher query against Neo4j database.
