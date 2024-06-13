@@ -1,10 +1,13 @@
-<mxfile host="app.diagrams.net" modified="2023-12-11T09:05:01.103Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="QOGztQVY5fDqKOYVIhdh" version="22.1.7" type="device">
+<mxfile host="app.diagrams.net" modified="2024-06-13T04:28:20.341Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="y_bwJp2Z0eW-j9mc6_1-" version="24.5.4" type="device">
   <diagram name="Page-1" id="7fj5daxvw-zFe0u0rVS1">
-    <mxGraphModel dx="1481" dy="3021" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="5926" dy="5474" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-11" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#5FD3F2;strokeWidth=3;" vertex="1" parent="1">
+        <mxCell id="hoaP64khOImTLO0eVR3v-5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=3;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="190" y="-460" width="1690" height="910" as="geometry" />
+        </mxCell>
+        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-11" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#5FD3F2;strokeWidth=3;" parent="1" vertex="1">
           <mxGeometry x="1010" y="210" width="830" height="260" as="geometry" />
         </mxCell>
         <mxCell id="LhaaEZWdWjMe5rznVUrv-11" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=3;" parent="1" vertex="1">
@@ -15,9 +18,6 @@
         </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=3;dashed=1;" parent="1" vertex="1">
           <mxGeometry x="580" y="1490" width="840" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="hoaP64khOImTLO0eVR3v-5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=3;dashed=1;" parent="1" vertex="1">
-          <mxGeometry x="190" y="-460" width="1650" height="910" as="geometry" />
         </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-6" value="&lt;font size=&quot;1&quot; face=&quot;Ubuntu&quot;&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt;Graphing Module&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1140" y="1530" width="60" height="30" as="geometry" />
@@ -49,9 +49,6 @@
         <mxCell id="hoaP64khOImTLO0eVR3v-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;" parent="1" source="hoaP64khOImTLO0eVR3v-16" target="hoaP64khOImTLO0eVR3v-24" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="hoaP64khOImTLO0eVR3v-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=3;" parent="1" source="hoaP64khOImTLO0eVR3v-16" target="hoaP64khOImTLO0eVR3v-26" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;" parent="1" source="hoaP64khOImTLO0eVR3v-16" target="hoaP64khOImTLO0eVR3v-20" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -79,17 +76,14 @@
         <mxCell id="hoaP64khOImTLO0eVR3v-23" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;is dependency of&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="600" y="-1160" width="180" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="sekZMtrXH7FRF9Zli4By-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;strokeWidth=3;" edge="1" parent="1" source="hoaP64khOImTLO0eVR3v-24" target="sekZMtrXH7FRF9Zli4By-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-24" value="&lt;font color=&quot;#7248b6&quot; style=&quot;font-size: 20px;&quot; face=&quot;Ubuntu&quot;&gt;&lt;b&gt;Redux Store&lt;/b&gt;&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=none;strokeColor=#7248B6;strokeWidth=3;" parent="1" vertex="1">
           <mxGeometry x="1320" y="-880" width="160" height="120" as="geometry" />
         </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-25" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;connect to via Redux Provider&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1000" y="-870" width="180" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="hoaP64khOImTLO0eVR3v-26" value="&lt;font color=&quot;#0086f7&quot; style=&quot;font-size: 20px;&quot; face=&quot;Ubuntu&quot;&gt;&lt;b style=&quot;&quot;&gt;Neo4J DB&lt;/b&gt;&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=none;strokeColor=#0086F7;strokeWidth=3;" parent="1" vertex="1">
-          <mxGeometry x="32" y="-880" width="160" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="hoaP64khOImTLO0eVR3v-27" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;connect to via suber&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="490" y="-870" width="180" height="30" as="geometry" />
         </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-28" value="&lt;font color=&quot;#ffffff&quot; style=&quot;font-size: 20px;&quot; face=&quot;Ubuntu&quot;&gt;&lt;b&gt;AppInit.tsx&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5B4372;" parent="1" vertex="1">
           <mxGeometry x="280" y="-660" width="120" height="120" as="geometry" />
@@ -139,17 +133,11 @@
         <mxCell id="hoaP64khOImTLO0eVR3v-41" value="&lt;font color=&quot;#ffffff&quot; style=&quot;font-size: 20px;&quot; face=&quot;Ubuntu&quot;&gt;&lt;b&gt;Stream.tsx&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" parent="1" vertex="1">
           <mxGeometry x="1070" y="-150" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="hoaP64khOImTLO0eVR3v-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;" parent="1" source="hoaP64khOImTLO0eVR3v-44" target="hoaP64khOImTLO0eVR3v-24" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;" parent="1" source="hoaP64khOImTLO0eVR3v-44" target="hoaP64khOImTLO0eVR3v-48" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-44" value="&lt;font color=&quot;#ffffff&quot; style=&quot;font-size: 20px;&quot; face=&quot;Ubuntu&quot;&gt;&lt;b&gt;Cypher&lt;br&gt;Frame.tsx&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" parent="1" vertex="1">
           <mxGeometry x="1070" y="60" width="120" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="hoaP64khOImTLO0eVR3v-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=3;" parent="1" source="hoaP64khOImTLO0eVR3v-48" target="hoaP64khOImTLO0eVR3v-24" edge="1">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;" parent="1" source="hoaP64khOImTLO0eVR3v-48" target="hoaP64khOImTLO0eVR3v-51" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -175,10 +163,10 @@
         <mxCell id="hoaP64khOImTLO0eVR3v-53" value="&lt;b style=&quot;border-color: var(--border-color); color: rgb(255, 255, 255); font-family: Ubuntu; font-size: 20px;&quot;&gt;Graph.tsx&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" parent="1" vertex="1">
           <mxGeometry x="850" y="800" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;dashed=1;" edge="1" parent="1" source="hoaP64khOImTLO0eVR3v-54" target="72ePsrUZ_O5xmpaCr2aJ-3">
+        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;dashed=1;" parent="1" source="hoaP64khOImTLO0eVR3v-54" target="72ePsrUZ_O5xmpaCr2aJ-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;dashed=1;" edge="1" parent="1" source="hoaP64khOImTLO0eVR3v-54" target="72ePsrUZ_O5xmpaCr2aJ-2">
+        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;dashed=1;" parent="1" source="hoaP64khOImTLO0eVR3v-54" target="72ePsrUZ_O5xmpaCr2aJ-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hoaP64khOImTLO0eVR3v-54" value="&lt;font color=&quot;#ffffff&quot; style=&quot;font-size: 20px;&quot; face=&quot;Ubuntu&quot;&gt;&lt;b&gt;Node&lt;br&gt;InspectionPanel.tsx&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" parent="1" vertex="1">
@@ -262,32 +250,56 @@
         <mxCell id="LhaaEZWdWjMe5rznVUrv-3" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;(Shared States)&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1310" y="-930" width="180" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="LhaaEZWdWjMe5rznVUrv-6" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.bendArrow;dy=15;dx=38;notch=0;arrowHead=55;rounded=0;strokeWidth=3;rotation=-90;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="17.67" y="-687.33" width="1109.68" height="975" as="geometry" />
-        </mxCell>
         <mxCell id="LhaaEZWdWjMe5rznVUrv-7" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Suber bus&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" parent="1" vertex="1">
-          <mxGeometry x="-40" y="-250" width="180" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="LhaaEZWdWjMe5rznVUrv-8" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.bendArrow;dy=15;dx=38;notch=0;arrowHead=55;rounded=0;strokeWidth=3;rotation=-90;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="133.82" y="-803.5" width="889.68" height="988" as="geometry" />
+          <mxGeometry x="1220" y="20" width="180" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LhaaEZWdWjMe5rznVUrv-9" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Suber receiver&lt;br&gt;(No States)&lt;br&gt;&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=0;" parent="1" vertex="1">
-          <mxGeometry x="20" y="-940" width="180" height="30" as="geometry" />
+          <mxGeometry x="1310" y="-980" width="180" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LhaaEZWdWjMe5rznVUrv-12" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Suber sender&lt;br&gt;&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=0;" parent="1" vertex="1">
           <mxGeometry x="840" y="200" width="180" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-1" value="&lt;font face=&quot;Ubuntu&quot; color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;DetailsPane&lt;br&gt;.tsx&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" vertex="1" parent="1">
-          <mxGeometry x="1450" y="275" width="130" height="130" as="geometry" />
+        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-1" value="&lt;font face=&quot;Ubuntu&quot; color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;DetailsPane&lt;br&gt;.tsx&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" parent="1" vertex="1">
+          <mxGeometry x="1530" y="275" width="130" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-2" value="&lt;font face=&quot;Ubuntu&quot; color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Default&lt;br&gt;DetailsPane&lt;br&gt;.tsx&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" vertex="1" parent="1">
+        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-2" value="&lt;font face=&quot;Ubuntu&quot; color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Default&lt;br&gt;DetailsPane&lt;br&gt;.tsx&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" parent="1" vertex="1">
           <mxGeometry x="1640" y="820" width="130" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-3" value="&lt;font face=&quot;Ubuntu&quot; color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Default&lt;br&gt;Overview&lt;br&gt;Pane&lt;br&gt;.tsx&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" vertex="1" parent="1">
+        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-3" value="&lt;font face=&quot;Ubuntu&quot; color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Default&lt;br&gt;Overview&lt;br&gt;Pane&lt;br&gt;.tsx&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" parent="1" vertex="1">
           <mxGeometry x="1640" y="615" width="130" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-4" value="&lt;font face=&quot;Ubuntu&quot; color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;&lt;br&gt;Overview&lt;br&gt;Pane&lt;br&gt;.tsx&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" vertex="1" parent="1">
-          <mxGeometry x="1640" y="275" width="130" height="130" as="geometry" />
+        <mxCell id="72ePsrUZ_O5xmpaCr2aJ-4" value="&lt;font face=&quot;Ubuntu&quot; color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;&lt;br&gt;Overview&lt;br&gt;Pane&lt;br&gt;.tsx&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=none;fillColor=#5FD3F2;" parent="1" vertex="1">
+          <mxGeometry x="1680" y="275" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="sekZMtrXH7FRF9Zli4By-4" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0.777;entryY=1.011;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;width=32;endSize=17.30666666666667;strokeWidth=3;endWidth=39.111111111111114;fillColor=#000000;" edge="1" parent="1" source="hoaP64khOImTLO0eVR3v-48" target="hoaP64khOImTLO0eVR3v-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1390" y="-60" as="sourcePoint" />
+            <mxPoint x="1440" y="-110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1450" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sekZMtrXH7FRF9Zli4By-5" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0.145;entryY=1;entryDx=0;entryDy=-4.35;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;width=32;endSize=17.30666666666667;strokeWidth=3;endWidth=39.111111111111114;strokeColor=#000000;fillColor=#000000;" edge="1" parent="1" target="hoaP64khOImTLO0eVR3v-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1190" y="119" as="sourcePoint" />
+            <mxPoint x="1434" y="-980" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1350" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sekZMtrXH7FRF9Zli4By-7" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Suber bus&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="20" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sekZMtrXH7FRF9Zli4By-8" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;connect to via suber&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="-800" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sekZMtrXH7FRF9Zli4By-9" value="&lt;font color=&quot;#0086f7&quot; style=&quot;font-size: 20px;&quot; face=&quot;Ubuntu&quot;&gt;&lt;b style=&quot;&quot;&gt;Neo4J DB&lt;/b&gt;&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=none;strokeColor=#0086F7;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="-880" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sekZMtrXH7FRF9Zli4By-12" value="&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;redux-observable&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Ubuntu&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;(Epics)&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="-870" width="180" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

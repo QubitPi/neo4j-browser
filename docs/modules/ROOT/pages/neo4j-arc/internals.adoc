@@ -80,3 +80,34 @@ go directly into the component that needs it.
 This is where https://github.com/oskarhane/suber[suber] comes in.
 
 image:redux-vs-suber.png[width=900]
+
+==== How is Suber Used in neo4j-browser?
+
+[NOTE]
+====
+
+This is how all those https://qubitpi.github.io/redux-observable/[Epics from redux-observable] come into play
+
+====
+
+The "sender" of Suber bus is a graphing component who wants to persists some data into Neo4j database. For example,
+when we
+link:../graph-interaction/index.html#_how_graph_interations_take_effect_on_displayed_graph_and_backing_database[add a new node]
+onto canvas, the graphing component initiates a Cypher query and
+https://github.com/oskarhane/suber?tab=readme-ov-file#self[feeds it into the Suber bus].
+
+We now know who the "sender" is at one end of Suber bus. Who is the receiver them? In its simplest form, our receiver
+can simply be https://github.com/oskarhane/suber?tab=readme-ov-file#usage[regular TypeScript class]. We also notice that
+Suber works with Redux. So how about having Redux as our "reciver"?
+
+If we do that, we will need to wire up some logic that sends the Cypher query against Neo4j database.
+*https://redux.qubitpi.org/tutorials/fundamentals/part-4-store/#middleware[Redux middleware] combined with
+redux-observable is able to perform that logic for us*.
+
+In neo4j-browser, the `cypherRequestEpic` in
+https://github.com/QubitPi/neo4j-browser/blob/master/src/shared/modules/cypher/cypherDuck.ts[cypherDuck] implements the
+"receiver". It takes a Cypher query and use the Neo4j's Bolt Protocol to write the data int Neo4j database.
+
+In summary:
+
+image:suber-epic.png[width=1100]
