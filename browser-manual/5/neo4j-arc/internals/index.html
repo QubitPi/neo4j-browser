@@ -667,6 +667,51 @@ go directly into the component that needs it.</p>
 <div class="paragraph">
 <p><span class="image"><img src="../../_images/redux-vs-suber.png" alt="redux vs suber" width="900"></span></p>
 </div>
+<div class="sect3">
+<h4 id="_how_is_suber_used_in_neo4j_browser"><a class="anchor" href="#_how_is_suber_used_in_neo4j_browser"></a>How is Suber Used in neo4j-browser?</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is how all those <a href="https://qubitpi.github.io/redux-observable/">Epics from redux-observable</a> come into play</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The "sender" of Suber bus is a graphing component who wants to persists some data into Neo4j database. For example,
+when we
+<a href="./graph-interaction/index.html#_how_graph_interations_take_effect_on_displayed_graph_and_backing_database">add a new node</a>
+onto canvas, the graphing component initiates a Cypher query and
+<a href="https://github.com/oskarhane/suber?tab=readme-ov-file#self">feeds it into the Suber bus</a>.</p>
+</div>
+<div class="paragraph">
+<p>We now know who the "sender" is at one end of Suber bus. Who is the receiver them? In its simplest form, our receiver
+can simply be <a href="https://qubitpi.github.io/redux-observable/">regular TypeScript class</a>. We also notice that Suber works
+with Redux. So how about having Redux as our "reciver"?</p>
+</div>
+<div class="paragraph">
+<p>If we do that, we will need to wire up some logic that sends the Cypher query against Neo4j database.
+<strong><a href="https://redux.qubitpi.org/tutorials/fundamentals/part-4-store/#middleware">Redux middleware</a> combined with
+redux-observable is able to perform that logic for us</strong>.</p>
+</div>
+<div class="paragraph">
+<p>In neo4j-browser, the <code>cypherRequestEpic</code> in
+<a href="https://github.com/QubitPi/neo4j-browser/blob/master/src/shared/modules/cypher/cypherDuck.ts">cypherDuck</a> implements the
+"receiver". It takes a Cypher query and use the Neo4j&#8217;s Bolt Protocol to write the data int Neo4j database.</p>
+</div>
+<div class="paragraph">
+<p>In summary:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../../_images/suber-epic.png" alt="suber epic" width="1100"></span></p>
+</div>
+</div>
 </div>
 </div>
 </div>
