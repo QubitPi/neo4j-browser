@@ -1,0 +1,41 @@
+# Copyright 2025 Jiaqi Liu
+# Licensed under the terms of the GNU General Public License. Please see LICENSE file distributed with this work for
+# terms.
+---
+name: Documentation
+
+"on":
+  pull_request:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci-cd:
+    name: Deploy Documentation to GitHub Pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    defaults:
+      run:
+        working-directory: docs
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: yarn
+      - run: yarn build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build/site
+          user_name: QubitPi
+          user_email: jack20220723@gmail.com
+          cname: neo4j-browser.qubitpi.org
